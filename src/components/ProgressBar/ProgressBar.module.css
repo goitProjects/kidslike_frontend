@@ -1,0 +1,46 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 280px;
+  padding: 10px 0;
+  margin: 0 auto;
+}
+
+.info {
+  width: 100%;
+}
+
+.progressText {
+  font-family: 'Montserrat';
+  font-size: 12px;
+  line-height: 21px;
+  text-align: center;
+}
+
+.points {
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.progressLibrary_container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.progressLibrary_container > div {
+  width: 200px;
+}
+
+.secondPoints {
+  font-weight: bold;
+  margin-left: 31px;
+}
+
+@media (min-width: 1280px) {
+  .wrapper {
+    margin: 0;
+    width: 280px;
+  }
+}

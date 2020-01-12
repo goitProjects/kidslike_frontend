@@ -1,0 +1,147 @@
+.taskModal {
+  width: 280px;
+  border-radius: 5px;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.taskImage {
+  height: 130px;
+  background-color: #fff;
+  position: relative;
+}
+
+.taskCloseButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 15px;
+  border: none;
+}
+
+.taskForm {
+  background-color: #ffbc33;
+  height: 190px;
+  position: relative;
+}
+
+.form {
+  /* padding-bottom: 25px; */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.taskInput {
+  font-size: 16px;
+  color: #ffffff;
+  background-color: transparent;
+  /* appearance: none; */
+  border: none;
+  border-bottom: 1px solid #fff;
+  margin-top: 20px;
+  text-align: center;
+  width: 224px;
+  font-style: italic;
+  margin-bottom: 30px;
+}
+
+::placeholder {
+  color: #ffffff;
+}
+
+.taskPoints {
+  font-size: 16px;
+  color: #ffffff;
+  background-color: transparent;
+  appearance: none;
+  border: none;
+  border-bottom: 1px solid #fff;
+
+  text-align: center;
+  width: 224px;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.taskIconEdit {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+
+  filter: invert(1);
+}
+
+.gradeIconEdit {
+  position: absolute;
+  top: -5px;
+  left: 20px;
+
+  filter: invert(1);
+}
+
+.taskSubmitButton {
+  padding: 10px 20px;
+  color: #000000;
+  background-color: #ffffff;
+  border-radius: 5px;
+  border-style: none;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  margin-top: 10px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(44, 44, 44, 0.719);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  z-index: 53;
+}
+
+/* ============== */
+.pointError {
+  top: 15px;
+  display: block;
+  color: #ef6537;
+  margin-top: 10px;
+  position: absolute;
+  bottom: -1rem;
+  font-size: 8px;
+  margin-left: 30px;
+}
+
+.titleError {
+  display: block;
+  color: #ef6537;
+  margin-top: 10px;
+  position: absolute;
+  bottom: -1rem;
+  font-size: 8px;
+  margin-left: 30px;
+
+  top: 35px;
+}
+
+.form label .error::first-letter {
+  text-transform: uppercase;
+}
+
+.textSection {
+  position: relative;
+}
+
+.pointsSection {
+  position: relative;
+}

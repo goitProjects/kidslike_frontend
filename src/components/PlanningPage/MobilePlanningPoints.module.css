@@ -1,0 +1,20 @@
+.pointsText {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #858598;
+}
+
+.pointsAmount {
+  display: inline-block;
+  vertical-align: middle;
+  padding-top: 7px;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  margin-right: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #8ec63f;
+  border-radius: 50%;
+}

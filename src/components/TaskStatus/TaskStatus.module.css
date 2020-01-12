@@ -1,0 +1,37 @@
+.task_status_attention {
+  width: 30px;
+  height: 30px;
+  background: var(--color-red);
+  border-radius: 50%;
+
+  position: relative;
+}
+
+.task_status_done {
+  width: 30px;
+  height: 30px;
+  background: var(--color-green);
+  border-radius: 50%;
+
+  position: relative;
+}
+
+.check_symbol {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  fill: var(--color-white);
+
+  position: absolute;
+}
+
+.attention {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  fill: var(--color-white);
+
+  position: absolute;
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Понеділок",
+    "shortName": "Пн",
+    "url": "monday",
+    "id": "1"
+  },
+  {
+    "name": "Вівторок",
+    "shortName": "Вт",
+    "url": "tuesday",
+    "id": "2"
+  },
+  {
+    "name": "Середа",
+    "shortName": "Ср",
+    "url": "wednesday",
+    "id": "3"
+  },
+  {
+    "name": "Четвер",
+    "shortName": "Чт",
+    "url": "thursday",
+    "id": "4"
+  },
+  {
+    "name": "П'ятниця",
+    "shortName": "Пт",
+    "url": "friday",
+    "id": "5"
+  },
+  {
+    "name": "Субота",
+    "shortName": "Сб",
+    "url": "saturday",
+    "id": "6"
+  },
+  {
+    "name": "Неділя",
+    "shortName": "Нд",
+    "url": "sunday",
+    "id": "7"
+  }
+]

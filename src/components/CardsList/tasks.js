@@ -1,0 +1,58 @@
+export default [
+  {
+    id: 1,
+    img: 'IMG',
+    title: 'Полы',
+    credits: 5,
+    isDone: true,
+  },
+  {
+    id: 2,
+    img: 'IMG',
+    title: 'Полы',
+    credits: 5,
+    isDone: true,
+  },
+  {
+    id: 3,
+    img: 'IMG',
+    title: 'Полы',
+    credits: 5,
+    isDone: true,
+  },
+  {
+    id: 4,
+    img: 'IMG',
+    title: 'Полы',
+    credits: 5,
+    isDone: true,
+  },
+  {
+    id: 5,
+    img: 'IMG',
+    title: 'Полы',
+    credits: 5,
+    isDone: true,
+  },
+  {
+    id: 6,
+    img: 'IMG',
+    title: 'Полы',
+    credits: 5,
+    isDone: true,
+  },
+  {
+    id: 7,
+    img: 'IMG',
+    title: 'Полы',
+    credits: 5,
+    isDone: true,
+  },
+  {
+    id: 8,
+    img: 'IMG',
+    title: 'Полы',
+    credits: 5,
+    isDone: true,
+  },
+];

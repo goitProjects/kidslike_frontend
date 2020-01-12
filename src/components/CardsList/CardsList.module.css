@@ -1,0 +1,93 @@
+.cards_list {
+  max-width: 280px;
+  padding-bottom: 40px;
+  margin: 0 auto 0;
+  list-style: none;
+}
+
+.card {
+  width: 280px;
+  height: 260px;
+  font-size: 0px;
+  background-color: var(--bg-color-white);
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+
+.cards_list li:last-child {
+  margin-bottom: 0px;
+}
+
+.no_tasks {
+  text-align: center;
+  font-size: 15px;
+  padding-bottom: 10px;
+}
+
+.redirect_to_planer {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  height: 48px;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0px 4px 6px 0px rgba(29, 29, 27, 0.15);
+  background-color: #efbb43;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.2;
+  font-weight: 500;
+  color: var(--color-white);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0 5px 0 5px;
+}
+
+.cards_list_planer {
+  background: url('../../assets/images/CardsList/planer_mobile.png') no-repeat;
+  background-size: contain;
+  background-position: center 95px;
+  display: block;
+  margin: 0 auto;
+  width: 170px;
+  height: 350px;
+}
+
+@media (min-width: 768px) {
+  .cards_list {
+    max-width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .card {
+    margin-right: 16px;
+  }
+
+  .cards_list li:nth-last-child(-n + 2) {
+    margin-bottom: 0px;
+  }
+
+  .cards_list_planer {
+    background: url('../../assets/images/CardsList/planer_tablet.png') no-repeat;
+    background-size: contain;
+    background-position: center 85px;
+    width: 300px;
+    height: 360px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .cards_list {
+    max-width: 1186px;
+    justify-content: start;
+  }
+
+  .cards_list_planer {
+    background: url('../../assets/images/CardsList/planer.png') no-repeat;
+    background-size: contain;
+    background-position: center 100px;
+    width: 90%;
+    height: 510px;
+  }
+}

@@ -1,0 +1,36 @@
+.weekDays {
+  background-color: var(--bg-color-gray);
+  padding-top: 64px;
+}
+
+.weekDaysList {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  width: 272px;
+  margin: 0 auto;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.weekDaysListLink {
+  display: block;
+  background-color: var(--color-light-orange);
+  width: 100%;
+  padding: 0 3px;
+  margin-right: 4px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 11px;
+  line-height: 21px;
+  text-decoration: none;
+  color: var(--text-color-black);
+}
+
+.weekDaysListItem:last-of-type {
+  margin-right: 0;
+}
+
+.active {
+  background-color: var(--color-dark-orange);
+}

@@ -1,0 +1,37 @@
+.body {
+  background-color: var(--bg-color-gray);
+  width: 100%;
+  padding: 20px;
+  padding-top: 30px;
+}
+
+@media (min-width: 768px) {
+  .body {
+    padding-top: 0px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .body {
+    padding: 64px 70px 0 70px;
+    width: 1280px;
+  }
+
+  .div2 {
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cardWrapper {
+    height: calc(100vh - 250px);
+    padding-top: 20px;
+    overflow: auto;
+  }
+
+  .cardWrapper > ul {
+    max-width: 890px;
+    margin: 0 auto;
+  }
+}

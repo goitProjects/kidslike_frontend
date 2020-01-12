@@ -1,0 +1,30 @@
+.present_button {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  border: none;
+  border-radius: 8px;
+  width: 240px;
+  font-size: 16px;
+  line-height: 18px;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  padding: 18px 0 18px;
+  background-color: var(--color-orange);
+  color: var(--bg-color-white);
+}
+
+@media (min-width: 768px) {
+  .present_button {
+    /* padding-bottom: 55px; */
+  }
+}
+
+@media (min-width: 1280px) {
+  .present_button {
+    max-width: 1184px;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,92 @@
+.planningContainer {
+  max-width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-color-gray);
+}
+
+@media (min-width: 768px) {
+  .customWrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .pointsTaskContainer {
+    padding-top: 115px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 30px;
+  }
+
+  .hiddenText {
+    margin-right: 25px;
+    display: inline-block;
+    font-size: 11px;
+    color: #858598;
+  }
+
+  .hiddenSpan {
+    display: inline-block;
+    margin-right: 6px;
+    color: #858598;
+  }
+
+  .pointsText {
+    text-align: center;
+    text-transform: none;
+    font-size: 11px;
+    color: #858598;
+  }
+
+  .pointsAmount {
+    display: inline-block;
+    vertical-align: middle;
+    padding-top: 7px;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    margin-right: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #8ec63f;
+    border-radius: 50%;
+  }
+
+  .addTaskBtn {
+    display: block;
+    width: 54px;
+    height: 54px;
+    background-color: #eeb844;
+    box-shadow: 0px 8px 29px 0px rgba(178, 138, 61, 0.31);
+    border-style: none;
+    border-radius: 50%;
+    font-size: 43px;
+    font-weight: 500;
+    color: #fff;
+  }
+}
+
+@media (min-width: 1280px) {
+  .pointsTaskContainer {
+    margin: 0 auto;
+    flex-direction: inherit;
+    justify-content: space-between;
+    width: 1186px;
+    padding-bottom: 0;
+  }
+
+  .secondTaskContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 784px;
+  }
+
+  .list {
+    padding-top: 40px;
+    height: calc(100vh - 230px);
+    overflow: auto;
+  }
+}

@@ -1,0 +1,13 @@
+.card_img {
+  display: block;
+}
+
+.card_footer {
+  min-height: 68px;
+  background-color: orange;
+}
+
+.card_footer_flex {
+  display: flex;
+  justify-content: space-between;
+}

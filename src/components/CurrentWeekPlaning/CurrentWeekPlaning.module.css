@@ -1,0 +1,24 @@
+@media (min-width: 768px) {
+  .wrapper {
+    margin: 0 auto;
+    margin-bottom: 30px;
+    top: 115px;
+    font-size: 1.125rem;
+    letter-spacing: 0.08em;
+  }
+
+  .week {
+    padding: 2px 0 0 5px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    vertical-align: middle;
+    bottom: 2px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .wrapper {
+    margin: 0;
+    margin-bottom: 0;
+  }
+}
