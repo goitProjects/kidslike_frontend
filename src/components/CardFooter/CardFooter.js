@@ -100,7 +100,7 @@ const CardFooter = ({ ...taskInfo }) => {
       return null;
     }
     if (url < today) {
-      return <TaskStatus value={isDone} />;
+      return <TaskStatus mainValue={isDone} />;
     }
   };
 

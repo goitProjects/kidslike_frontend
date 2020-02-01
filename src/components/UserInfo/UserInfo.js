@@ -6,9 +6,15 @@ import { ModalLogoutOpen } from '../../redux/global/globalActions';
 import defaultuserlogo from '../../assets/icons/userinfo/UserInfoLogo.jpg';
 
 const changeUserName = name => {
+  if (name.indexOf(' ') !== -1) {
+    let shortName = name.slice(0, name.indexOf(' '));
+    shortName = shortName.length > 10 ? shortName.slice(0, 10) : shortName;
+    return shortName;
+  }
   if (name.indexOf('@') !== -1) {
-    name.slice(0, name.indexOf('@'));
-    return name.slice(0, name.indexOf('@'));
+    let shortName = name.slice(0, name.indexOf('@'));
+    shortName = shortName.length > 10 ? shortName.slice(0, 10) : shortName;
+    return shortName;
   }
   return name.length > 10 ? name.slice(0, 10) : name;
 };
