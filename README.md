@@ -14,4 +14,4 @@
 7. [Схема фронтенда](https://drive.google.com/file/d/1acWxCS7tHXr3QXxYRvzgcz3ff0vc-H6A/view?usp=sharing) -
    разбивка на компоненты и страницы
 8. [Ссылка на инструкцию по работе с github](https://docs.google.com/document/d/1y-nMdpPIIP83rbqPYt6kM_KXMC83UPbkbxKqgaHlnfI/edit)
-9. [Реализацию redux store смотреть в redux devtools готового проекта, они в продакшене не отключены](https://docs.google.com/document/d/1y-nMdpPIIP83rbqPYt6kM_KXMC83UPbkbxKqgaHlnfI/edit)
+9. [Реализацию redux store смотреть в redux devtools готового проекта, они в продакшене не отключены](https://kidslike.goit.co.ua/)
