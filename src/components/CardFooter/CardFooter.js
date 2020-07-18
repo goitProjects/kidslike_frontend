@@ -39,7 +39,8 @@ const CardFooter = ({ ...taskInfo }) => {
     const value = target.checked ? taskPoints : 0 - taskPoints;
 
     if (userPoints - value < 0) {
-      toast.error('Балів не достатньо');
+      // toast.error('Балів не достатньо');
+      toast.error('Баллов недостаточно');
     } else {
       dispatch(toggleSelectedCardAction(_id, taskPoints, isSelected));
     }

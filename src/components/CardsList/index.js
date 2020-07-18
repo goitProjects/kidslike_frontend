@@ -41,10 +41,12 @@ const ContainerList = ({ arr }) => {
     <div className={styles.cards_list_planer}>
       {dayNow <= url && (
         <>
-          <h2 className={styles.no_tasks}>На сьогоднi завдань немає</h2>
+          {/* <h2 className={styles.no_tasks}>На сьогоднi завдань немає</h2> */}
+          <h2 className={styles.no_tasks}>На сегодняшний день задач нет</h2>
           <NavLink to="/planning">
             <button type="button" className={styles.redirect_to_planer}>
-              Запланувати новi задачi
+              {/* Запланувати новi задачi */}
+              Запланировать новые задачи
             </button>
           </NavLink>
         </>
