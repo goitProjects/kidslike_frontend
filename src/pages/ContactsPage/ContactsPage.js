@@ -8,7 +8,8 @@ const ContactsPage = () => {
     <div className={styles.contacts}>
       <p className={styles.contacts_main_tittle}>Наша команда</p>
       <p className={styles.contacts_second_tittle}>
-        Завжди готові до нових викликів!
+        {/* Завжди готові до нових викликів! */}
+        Всегда готовы к новым вызовам!
       </p>
       <ul className={styles.contacts_all_card}>
         {Contacts.map(el => (

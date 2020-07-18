@@ -13,7 +13,8 @@ const CurrentWeekPlaning = () => {
   return (
     <>
       <p className={s.wrapper}>
-        План на тиждень:
+        {/* План на тиждень: */}
+        План на неделю:
         <span className={s.week}>
           {' '}
           {startOfWeek} - {endOfWeek}{' '}

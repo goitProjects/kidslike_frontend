@@ -7,7 +7,8 @@ import getWeekPlanPoints from '../../redux/tasks/taskSelector';
 const PlanningPoints = ({ countPoints }) => (
   <p className={styles.pointsText}>
     <span className={styles.pointsAmount}>{countPoints}</span>
-    бали
+    {/* бали */}
+    баллы
   </p>
 );
 

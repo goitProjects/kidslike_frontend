@@ -4,7 +4,8 @@ import s from './CurrentDay.module.css';
 
 const CurrentDay = ({ day, date }) => (
   <div className={s.wrapper}>
-    <h2 className={s.task}>Мoї завдання:</h2>
+    {/* <h2 className={s.task}>Мoї завдання:</h2> */}
+    <h2 className={s.task}>Мoи задачи:</h2>
     <p className={s.day}>
       {`${day}`}, {`${date}`}
     </p>

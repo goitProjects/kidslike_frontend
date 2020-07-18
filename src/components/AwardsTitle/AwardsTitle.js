@@ -6,7 +6,8 @@ const AwardsTitle = () => {
   return (
     <div className={style.present_item}>
       <Box className={style.box} />
-      <h2 className={style.title}>Мої призи</h2>
+      {/* <h2 className={style.title}>Мої призи</h2> */}
+      <h2 className={style.title}>Мои призы</h2>
     </div>
   );
 };

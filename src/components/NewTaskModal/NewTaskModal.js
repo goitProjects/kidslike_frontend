@@ -14,11 +14,18 @@ const validationRules = {
   taskPoints: 'number|integer|range:1,9|required',
 };
 
+// const validationMessages = {
+//   'title.required': "Це обов'язкове поле",
+//   'taskPoints.required': "Це обов'язкове поле",
+//   'title.max': 'не більше 20 символів',
+//   'taskPoints.range': 'має бути від 1 до 9 балів',
+// };
+
 const validationMessages = {
-  'title.required': "Це обов'язкове поле",
-  'taskPoints.required': "Це обов'язкове поле",
-  'title.max': 'не більше 20 символів',
-  'taskPoints.range': 'має бути від 1 до 9 балів',
+  'title.required': 'Это обязательное поле',
+  'taskPoints.required': 'Это обязательное поле',
+  'title.max': 'не более 20 символов',
+  'taskPoints.range': 'должно быть от 1 до 9 баллов',
 };
 
 class NewTaskModal extends Component {
@@ -111,7 +118,8 @@ class NewTaskModal extends Component {
                 <Edit className={style.taskIconEdit} />
                 <input
                   className={style.taskInput}
-                  placeholder="Додати завдання..."
+                  // placeholder="Додати завдання..."
+                  placeholder="Добавить задание..."
                   type="text"
                   name="title"
                   value={title}
@@ -130,7 +138,8 @@ class NewTaskModal extends Component {
                   type="number"
                   value={taskPoints}
                   name="taskPoints"
-                  placeholder="Додати бали..."
+                  // placeholder="Додати бали..."
+                  placeholder="Добавить баллы..."
                   onChange={this.handleChange}
                 />
                 {error && (

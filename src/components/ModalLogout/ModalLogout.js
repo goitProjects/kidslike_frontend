@@ -18,7 +18,8 @@ const ModalLogout = ({ onCloseModalLogout, onLogout }) => {
       <ModalBackdrop onClose={onCloseModalLogout}>
         <div className={styleModalLogout.modalSize}>
           <h2 className={styleModalLogout.modalTitleText}>
-            Ви дійсно бажаєте вийти?
+            {/* Ви дійсно бажаєте вийти? */}
+            Вы действительно хотите выйти?
           </h2>
 
           <div className={styleModalLogout.prizeContainer} />
@@ -27,13 +28,15 @@ const ModalLogout = ({ onCloseModalLogout, onLogout }) => {
               className={styleModalLogout.point_amount}
               onClick={handleLogout}
             >
-              Так
+              {/* Так */}
+              Да
             </button>
             <button
               onClick={onCloseModalLogout}
               className={styleModalLogout.point_amount}
             >
-              Ні
+              {/* Ні */}
+              Нет
             </button>
           </div>
         </div>

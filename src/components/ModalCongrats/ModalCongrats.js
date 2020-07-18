@@ -18,7 +18,8 @@ const ModalCongrats = ({ onClose, awards, userPoints }) => {
         <div className={styleModalCongrats.modalSize}>
           <img className={styleModalCongrats.catTop} src={catTop} alt="" />
           <h2 className={styleModalCongrats.modalTitleText}>
-            Вітаємо! Ти отримуєш:
+            {/* Вітаємо! Ти отримуєш: */}
+            Поздравляем! Ты получаешь:
           </h2>
           <div className={styleModalCongrats.prizeContainer}>
             <ul className={styleModalCongrats.prizeContainerList}>
@@ -36,7 +37,9 @@ const ModalCongrats = ({ onClose, awards, userPoints }) => {
                   />
 
                   <p className={styleModalCongrats.prizeContainerItemText}>
-                    {el.taskPoints} балів
+                    {el.taskPoints}
+                    {/* балів */}
+                    баллов
                   </p>
                 </li>
               ))}
@@ -44,14 +47,17 @@ const ModalCongrats = ({ onClose, awards, userPoints }) => {
           </div>
 
           <p className={styleModalCongrats.prizeContainerItemText}>
-            Сумарна кількість балів: {result}
+            {/* Сумарна кількість балів: {result} */}
+            Суммарное количество баллов: {result}
           </p>
 
           <div className={styleModalCongrats.buttonContainer}>
             {/* <button className={styleModalLogout.point_amount_long}>
               <p className={styleModalLogout.point_amount_p}>Підтвердити!</p>
             </button> */}
-            <AwardsSubmitButton buttonText="Підтвердити" onClick={userPoints} />
+            {/* <AwardsSubmitButton buttonText="Підтвердити" onClick={userPoints} /> */}
+
+            <AwardsSubmitButton buttonText="Подтвердить" onClick={userPoints} />
           </div>
         </div>
       </ModalBackdrop>

@@ -20,11 +20,13 @@ const ProgressBar = ({ userPoints, countPoints }) => {
       <div className={style.wrapper}>
         <div className={style.info}>
           <p className={style.progressText}>
-            Зароблено балів за весь період:
+            {/* Зароблено балів за весь період: */}
+            Заработано баллов за весь период:
             <span className={style.points}>{userPoints}</span>
           </p>
           <p className={style.progressText}>
-            Заплановано балів на цей тиждень:
+            {/* Заплановано балів на цей тиждень: */}
+            Запланировано баллов на эту неделю:
             <span className={style.points}>{countPoints}</span>
           </p>
         </div>

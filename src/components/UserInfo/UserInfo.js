@@ -39,7 +39,8 @@ const UserInfo = ({ isModalLogoutOpen, user }) => {
           type="button"
           className={styles.userinfobutton}
         >
-          Вийти
+          {/* Вийти */}
+          Выйти
         </button>
       </div>
     </div>

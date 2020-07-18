@@ -11,7 +11,8 @@ const Footer = () => {
           <img src={LogoIMG} className={s.Logo_IMG} alt="kidslike" />
         </Link>
         <div className={s.footerText}>
-          Робимо життя батьків і дітей ізі &#9786;
+          {/* Робимо життя батьків і дітей ізі &#9786; */}
+          Делаем жизнь родителей и детей изи &#9786;
         </div>
         <p className={s.footerSpan}>2019</p>
       </div>

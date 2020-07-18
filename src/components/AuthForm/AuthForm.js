@@ -17,12 +17,20 @@ const validationRules = {
   password: 'required|min:6|max:12',
 };
 
+// const validationMessages = {
+//   'email.required': "Це обов'язкове поле!",
+//   'password.required': "Це обов'язкове поле!",
+//   'email.email': 'Введіть валідну електронну пошту!',
+//   'password.min': 'Пароль має бути не менше 6 символів!',
+//   'password.max': 'Пароль має бути не більше 12 символів!',
+// };
+
 const validationMessages = {
-  'email.required': "Це обов'язкове поле!",
-  'password.required': "Це обов'язкове поле!",
-  'email.email': 'Введіть валідну електронну пошту!',
-  'password.min': 'Пароль має бути не менше 6 символів!',
-  'password.max': 'Пароль має бути не більше 12 символів!',
+  'email.required': 'Это обязательное поле!',
+  'password.required': 'Это обязательное поле!',
+  'email.email': 'Введите валидную электронную почту!',
+  'password.min': 'Пароль должен быть не менее 6 символов!',
+  'password.max': 'Пароль должен быть не более 12 символов!',
 };
 
 class AuthForm extends Component {
@@ -56,14 +64,16 @@ class AuthForm extends Component {
       switch (serverError) {
         case 'users was not saved':
           toast.error(
-            'Користувач з такою электронную поштою вже зареєстрований!',
+            // 'Користувач з такою электронную поштою вже зареєстрований!',
+            'Пользователь с таким электронную почте уже зарегистрирован!',
             { position: toast.POSITION.TOP_CENTER },
           );
           break;
 
         case 'User in not defined':
           toast.error(
-            'Користувач з такою электронную поштою не зареєстрований!!',
+            // 'Користувач з такою электронную поштою не зареєстрований!!',
+            'Пользователь с таким электронную почте не зарегистрирован !!',
             {
               position: toast.POSITION.TOP_CENTER,
             },
@@ -71,9 +81,13 @@ class AuthForm extends Component {
           break;
 
         case 'Password is invalid':
-          toast.error('Введений пароль невірний!', {
-            position: toast.POSITION.TOP_CENTER,
-          });
+          toast.error(
+            // 'Введений пароль невірний!',
+            'Введенный пароль неверный!',
+            {
+              position: toast.POSITION.TOP_CENTER,
+            },
+          );
           break;
 
         default:
@@ -133,7 +147,8 @@ class AuthForm extends Component {
         <div className={s.auth}>
           <div className={s.auth__wrapper}>
             <p className={`${s.auth__description} ${s.description__first}`}>
-              Ви можете авторизуватися за допомогою Google Account:
+              {/* Ви можете авторизуватися за допомогою Google Account: */}
+              Вы можете авторизоваться с помощью Google Account:
             </p>
             <a
               className={s.auth__link__google}
@@ -145,8 +160,10 @@ class AuthForm extends Component {
               </div>
             </a>
             <p className={`${s.auth__description} ${s.description__second}`}>
-              Або зайти за допомогою e-mail та паролю, попередньо
-              зареєструвавшись:
+              {/* Або зайти за допомогою e-mail та паролю, попередньо
+              зареєструвавшись: */}
+              Или зайти с помощью e-mail и пароля, предварительно
+              зарегистрировавшись:
             </p>
 
             <form autoComplete="off" onSubmit={this.handleSubmit}>
@@ -186,14 +203,16 @@ class AuthForm extends Component {
                   className={s.auth__button}
                   type="submit"
                 >
-                  Увійти
+                  {/* Увійти */}
+                  Войти
                 </button>
                 <button
                   onClick={() => this.setTypeSubmit('register')}
                   className={s.auth__button}
                   type="submit"
                 >
-                  Зареєструватися
+                  {/* Зареєструватися */}
+                  Зарегистрироваться
                 </button>
               </div>
             </form>

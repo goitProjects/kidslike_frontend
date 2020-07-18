@@ -10,7 +10,8 @@ const AddCustomTask = ({ isNewTaskModalOpen, openModal }) => {
     <>
       <div className={styles.customWrapper}>
         <p className={styles.hiddenText}>
-          Хочеш отримати більше призів - додай завдання
+          {/* Хочеш отримати більше призів - додай завдання */}
+          Хочешь получить больше призов - добавь задачи
           <span role="img" aria-label="	SMILING FACE WITH SMILING EYES">
             &#128522;
           </span>

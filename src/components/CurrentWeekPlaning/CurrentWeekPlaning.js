@@ -10,10 +10,15 @@ const CurrentWeekPlaning = () => {
   const endOfWeek = moment()
     .endOf('week')
     .format('DD.MM.YYYY');
+
+  // console.log(startOfWeek);
+  // console.log(endOfWeek);
+
   return (
     <>
       <p className={s.wrapper}>
-        План на тиждень:
+        {/* План на тиждень: */}
+        План на неделю:
         <span className={s.week}>
           {' '}
           {startOfWeek} - {endOfWeek}{' '}

@@ -21,7 +21,8 @@ const AuthPage = props => {
         <div className={styles.auth__bck}>
           <div className={styles.container}>
             <h2 className={styles.auth__title}>
-              Виконуй завдання, отримай класні призи!
+              {/* Виконуй завдання, отримай класні призи! */}
+              Выполняй задания, получи классные призы!
             </h2>
             <AuthForm />
           </div>

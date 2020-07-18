@@ -20,17 +20,19 @@ const HeaderModal = ({ isAuth, onClose, isModalLogoutOpen }) => {
         pathname: '/',
         search: `?day=${currentDay}&unix-date=${Date.now()}`,
       },
-      name: 'Головна',
+      // name: 'Головна',
+      name: 'Главная',
       protected: true,
     },
     {
       path: routes.AUTH_PAGE.path,
-      name: 'Авторизація',
+      // name: 'Авторизація',
+      name: 'Авторизация',
       protected: false,
     },
-    { path: routes.PLANNING_PAGE.path, name: 'Планування', protected: true },
-    { path: routes.AWARDS_PAGE.path, name: 'Нагороди', protected: true },
-    { path: routes.CONTACTS_PAGE.path, name: 'Контакти', protected: false },
+    { path: routes.PLANNING_PAGE.path, name: 'Планирование', protected: true },
+    { path: routes.AWARDS_PAGE.path, name: 'Награды', protected: true },
+    { path: routes.CONTACTS_PAGE.path, name: 'Контакты', protected: false },
   ];
   const renderLinks = menuItemsArr.filter(el =>
     isAuth ? el.path !== routes.AUTH_PAGE.path && true : !el.protected,
@@ -70,7 +72,8 @@ const HeaderModal = ({ isAuth, onClose, isModalLogoutOpen }) => {
             type="button"
             onClick={handleMenuClose}
           >
-            Вийти
+            {/* Вийти */}
+            Выйти
           </button>
         )}
       </div>
