@@ -47,12 +47,12 @@ const CurrentWeekRange = () => {
       'Декабрь',
     ];
 
-    console.log(moment().get('M'));
+    // console.log(moment().get('M'));\
 
     return monthes[moment().get('M')];
   }
   const month = getThisMonth(moment().get('M'));
-  console.log('month', month);
+  // console.log('month', month);
 
   return (
     <div className={s.wrapper}>

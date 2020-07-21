@@ -1,9 +1,13 @@
+/* eslint-disable react/prop-types */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+// import { Link, withRouter } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import * as moment from 'moment';
 import { connect } from 'react-redux';
+// import { compose } from 'redux';
 import slideTransition from '../../transitions/fade.module.css';
 import Navigation from '../Navigation/Navigation';
 import HeaderModal from '../HeaderModal/HeaderModal';
@@ -26,6 +30,17 @@ class Header extends Component {
   openModal = () => this.setState({ isModalOpen: true });
 
   closeModal = () => this.setState({ isModalOpen: false });
+
+  /* Добавить язык в url */
+  addRuLeng = () => {
+    console.log(this.props);
+    // const { history, location } = this.props;
+
+    // history.push({
+    //   ...location,
+    //   search: `${location.search}&lang=ru`,
+    // });
+  };
 
   render() {
     const { isModalOpen } = this.state;
@@ -60,22 +75,28 @@ class Header extends Component {
             {/* <div className={styles.lengBlock}> */}
             <ul className={styles.listLeng}>
               <li className={styles.listLengItem}>
-                <a
+                <button type="button" onClick={this.addRuLeng}>
+                  ru
+                </button>
+                {/* <a
                   className={styles.listLengLink}
                   href="/"
                   // target="_blank"
                 >
                   ru
-                </a>
+                </a> */}
               </li>
               <li className={styles.listLengItem}>
-                <a
+                {/* <button type="button" onClick={}>
+                  ua
+                </button> */}
+                {/* <a
                   className={styles.listLengLink}
                   href="https://kidslike.goit.co.ua"
                   // target="_blank"
                 >
                   ua
-                </a>
+                </a> */}
               </li>
             </ul>
             {/* </div> */}
@@ -104,3 +125,7 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(Header);
+// withRouter
+// compose
+
+// export default compose(withRouter, connect(mapStateToProps))(Header);
