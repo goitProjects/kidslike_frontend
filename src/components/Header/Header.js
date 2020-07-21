@@ -53,8 +53,33 @@ class Header extends Component {
           >
             <img className={styles.siteLogo} alt="SiteLogo" src={logoMobile} />
           </Link>
+
           <div className={styles.navControls}>
             <Navigation />
+
+            {/* <div className={styles.lengBlock}> */}
+            <ul className={styles.listLeng}>
+              <li className={styles.listLengItem}>
+                <a
+                  className={styles.listLengLink}
+                  href="/"
+                  // target="_blank"
+                >
+                  ru
+                </a>
+              </li>
+              <li className={styles.listLengItem}>
+                <a
+                  className={styles.listLengLink}
+                  href="https://kidslike.goit.co.ua"
+                  // target="_blank"
+                >
+                  ua
+                </a>
+              </li>
+            </ul>
+            {/* </div> */}
+
             <div className={styles.authModule}>
               {isAuth && <UserInfo />}
               <button
