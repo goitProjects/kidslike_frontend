@@ -13,8 +13,44 @@ import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import ModalCongrats from '../../components/ModalCongrats/ModalCongrats';
 import { submitAwardOperation } from '../../redux/awards/awardsOperation';
 
+//= =
+const arrT = [
+  'сладости',
+  'Поход в кино',
+  'подарок',
+  'вечер пиццы',
+  'Вечеринка с друзьями',
+  'Поход в Макдональдс',
+  'желание',
+  'Поход на каток',
+];
+
+// const arr = [
+//   'Солодощі',
+//   'Похід у кіно',
+//   'Подарунок',
+//   'Вечір піцци',
+//   'Вечірка з друзями',
+//   'Похід у Макдональдс',
+//   'Бажання',
+//   'Похід на ковзанку',
+// ];
+
+//= =
+
 const AwardsPage = ({ isOpen, modalOpen, onClose, userPoints }) => {
-  const awards = useSelector(state => state.awards.arrayAwards);
+  // const awards = useSelector(state => state.awards.arrayAwards);
+
+  //= =
+  // const aaa = awards.map(item => item.title);
+  // console.log('aaa', aaa);
+  let awards = useSelector(state => state.awards.arrayAwards);
+  // console.log('awards000', awards);
+  awards = awards.map((item, idx) => ({ ...item, title: arrT[idx] }));
+  // console.log('awards111', awards);
+
+  //= =
+
   const activeButton = useSelector(state => state.awards.totalPoints);
 
   return (

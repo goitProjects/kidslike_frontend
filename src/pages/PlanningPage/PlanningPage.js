@@ -15,8 +15,32 @@ import AddCustomTask from '../../components/PlanningPage/AddCustomTask';
 import MobileAddCustomTask from '../../components/PlanningPage/MobileAddCustomTask';
 import { changeTasksPlanningOperation } from '../../redux/tasks/tasksOperations';
 
+//= =
+const arrT = [
+  'Застелить кровать',
+  'Пропилососить',
+  'Полить цветы',
+  'Почитать книгу',
+  'Выкинуть мусор',
+  'Почистить зубы',
+  'Подмести',
+  'Собрать игрушки',
+];
+//= =
+
 const PlanningPage = () => {
-  const tasks = useSelector(state => state.tasks.items);
+  // const tasks = useSelector(state => state.tasks.items);
+
+  //= =
+  let tasks = useSelector(state => state.tasks.items);
+  // console.log('tasks', tasks);
+  tasks = tasks.map((item, idx) => ({
+    ...item,
+    title: arrT[idx] ? arrT[idx] : item.title,
+  }));
+  // console.log(tasks);
+  //= =
+
   const history = useHistory();
   const dispatch = useDispatch();
 

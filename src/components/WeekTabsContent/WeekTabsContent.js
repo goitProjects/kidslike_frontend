@@ -15,9 +15,50 @@ let date = null;
 
 const momentObj = moment();
 
+//= =
+const arrT = [
+  'Застелить кровать',
+  'Пропилососить',
+  'Полить цветы',
+  'Почитать книгу',
+  'Выкинуть мусор',
+  'Почистить зубы',
+  'Подмести',
+  'Собрать игрушки',
+];
+
+// const arr2 = [
+//   'Застеліті ліжко',
+//   'Пропілососіті',
+//   'Політі квіти',
+//   'почитати книгу',
+//   'Вікінуті сміття',
+//   'почистити зуби',
+//   'Підместі',
+//   'Скласти іграшки',
+// ];
+//= =
+
 const WeekTabsContent = () => {
   const { search } = useLocation();
-  const tasks = useSelector(state => state.tasks.items);
+  // const tasks = useSelector(state => state.tasks.items);
+  // console.log('tasks', tasks);
+
+  //= =
+  // const aaa = tasks.map(item => item.title);
+  // console.log('aaa', aaa);
+
+  // const bbb = tasks.map((item, idx) => ({ ...item, title: arrT[idx] }));
+  // console.log('bbb', bbb);
+
+  let tasks = useSelector(state => state.tasks.items);
+  // console.log('tasks', tasks);
+  tasks = tasks.map((item, idx) => ({
+    ...item,
+    title: arrT[idx] ? arrT[idx] : item.title,
+  }));
+  // console.log(tasks);
+  //= =
 
   const getWeekDay = () => {
     let url;
