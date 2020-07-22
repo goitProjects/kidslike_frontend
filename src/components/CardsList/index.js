@@ -4,14 +4,19 @@
 import React from 'react';
 import { useLocation, NavLink } from 'react-router-dom';
 import moment from 'moment';
+import { useSelector } from 'react-redux';
 import styles from './CardsList.module.css';
 import CardsList from './CardsList';
+import { getIsShowLengRu } from '../../redux/global/globalSelectors';
 
 const momentObj = moment();
 const dayNow = momentObj.isoWeekday();
 let url;
+
 const ContainerList = ({ arr }) => {
   const { search, pathname } = useLocation();
+
+  const isShowLangRu = useSelector(getIsShowLengRu);
 
   const currentCards = cardsArr => {
     if (pathname === '/') {
@@ -41,12 +46,16 @@ const ContainerList = ({ arr }) => {
     <div className={styles.cards_list_planer}>
       {dayNow <= url && (
         <>
-          {/* <h2 className={styles.no_tasks}>На сьогоднi завдань немає</h2> */}
-          <h2 className={styles.no_tasks}>На сегодняшний день задач нет</h2>
+          {!isShowLangRu ? (
+            <h2 className={styles.no_tasks}>На сьогоднi завдань немає</h2>
+          ) : (
+            <h2 className={styles.no_tasks}>На сегодняшний день задач нет</h2>
+          )}
           <NavLink to="/planning">
             <button type="button" className={styles.redirect_to_planer}>
-              {/* Запланувати новi задачi */}
-              Запланировать новые задачи
+              {!isShowLangRu
+                ? 'Запланувати новi задачi'
+                : 'Запланировать новые задачи'}
             </button>
           </NavLink>
         </>

@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import * as authSelectors from '../../redux/auth/authSelectors';
 import * as authActions from '../../redux/auth/authActions';
 import Loader from '../Loader/Loader';
+import { getIsShowLengRu } from '../../redux/global/globalSelectors';
 
 const validationRules = {
   email: 'required|email',
@@ -44,6 +45,8 @@ class AuthForm extends Component {
     cleanError: PropTypes.func.isRequired,
     serverError: PropTypes.string,
     serverIsLoading: PropTypes.bool.isRequired,
+
+    isShowLangRu: PropTypes.bool.isRequired,
   };
 
   state = { email: '', password: '', error: null, typeSubmit: '' };
@@ -140,7 +143,93 @@ class AuthForm extends Component {
 
   render() {
     const { email, password, error } = this.state;
-    const { serverIsLoading } = this.props;
+    const { serverIsLoading, isShowLangRu } = this.props;
+
+    if (!isShowLangRu) {
+      return (
+        <>
+          <div className={s.auth}>
+            <div className={s.auth__wrapper}>
+              <p className={`${s.auth__description} ${s.description__first}`}>
+                Ви можете авторизуватися за допомогою Google Account:
+                {/* Вы можете авторизоваться с помощью Google Account: */}
+              </p>
+              <a
+                className={s.auth__link__google}
+                href="https://kidslike.goit.co.ua/api/auth/google"
+              >
+                <div className={s.auth__link__wrapper}>
+                  <IconGoogle width="28" height="28" />
+                  <span className={s.auth__link__span}>Google</span>
+                </div>
+              </a>
+              <p className={`${s.auth__description} ${s.description__second}`}>
+                Або зайти за допомогою e-mail та паролю, попередньо
+                зареєструвавшись:
+                {/* Или зайти с помощью e-mail и пароля, предварительно
+                зарегистрировавшись: */}
+              </p>
+
+              <form autoComplete="off" onSubmit={this.handleSubmit}>
+                <div className={s.auth__form}>
+                  <label className={s.auth__label} htmlFor={this.ids.emailId}>
+                    E-mail&#58;
+                    <input
+                      className={`${s.auth__input} ${s.auth__input__first}`}
+                      id={this.ids.emailId}
+                      type="email"
+                      name="email"
+                      placeholder="Enter your email"
+                      value={email}
+                      onChange={this.handleChange}
+                    />
+                    {error && <span className={s.error}>{error.email}</span>}
+                  </label>
+
+                  <label
+                    className={s.auth__label}
+                    htmlFor={this.ids.passwordId}
+                  >
+                    Пароль&#58;
+                    <input
+                      className={s.auth__input}
+                      id={this.ids.passwordId}
+                      type="password"
+                      name="password"
+                      placeholder="Enter your password"
+                      value={password}
+                      onChange={this.handleChange}
+                    />
+                    {error && <span className={s.error}>{error.password}</span>}
+                  </label>
+                </div>
+
+                <div className={s.auth__buttons}>
+                  <button
+                    onClick={() => this.setTypeSubmit('login')}
+                    className={s.auth__button}
+                    type="submit"
+                  >
+                    Увійти
+                    {/* Войти */}
+                  </button>
+                  <button
+                    onClick={() => this.setTypeSubmit('register')}
+                    className={s.auth__button}
+                    type="submit"
+                  >
+                    Зареєструватися
+                    {/* Зарегистрироваться */}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <ToastContainer />
+          {serverIsLoading && <Loader />}
+        </>
+      );
+    }
 
     return (
       <>
@@ -228,6 +317,8 @@ class AuthForm extends Component {
 const mapStateToProps = store => ({
   serverError: authSelectors.getServerError(store),
   serverIsLoading: authSelectors.getServerIsLoading(store),
+
+  isShowLangRu: getIsShowLengRu(store),
 });
 
 const mapDispatchToProps = dispatch => ({

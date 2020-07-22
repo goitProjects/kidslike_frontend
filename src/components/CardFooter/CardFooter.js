@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable consistent-return */
+/* eslint-disable */
+
 import { toast } from 'react-toastify';
 import React, { useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -12,7 +14,7 @@ import {
 } from '../../redux/tasks/tasksActions';
 import { toggleSelectedCardAction } from '../../redux/awards/awardsAction';
 import {
-  submitAwardOperation,
+  // submitAwardOperation,
   changeUserPointsOperation,
 } from '../../redux/awards/awardsOperation';
 import { changeTaskTodayOperation } from '../../redux/tasks/tasksOperations';
@@ -23,6 +25,7 @@ import TaskToggle from '../TaskToggle/TaskToggle';
 import TaskStatus from '../TaskStatus/TaskStatus';
 
 import s from './CardFooter.module.css';
+import { getIsShowLengRu } from '../../redux/global/globalSelectors';
 
 const today = moment().isoWeekday();
 const momentObj = moment();
@@ -32,15 +35,18 @@ const CardFooter = ({ ...taskInfo }) => {
   const { _id, title, taskPoints, days, isDone, isSelected, date } = taskInfo;
   const dispatch = useDispatch();
   useEffect(() => {}, [search]);
-  const totalPoints = useSelector(state => state.awards.totalPoints);
+
+  // const totalPoints = useSelector(state => state.awards.totalPoints);
   const userPoints = useSelector(state => state.auth.user.points);
+  const isShowLangRu = useSelector(getIsShowLengRu);
 
   const handleChangeAwards = ({ target }) => {
     const value = target.checked ? taskPoints : 0 - taskPoints;
 
     if (userPoints - value < 0) {
-      // toast.error('Балів не достатньо');
-      toast.error('Баллов недостаточно');
+      !isShowLangRu
+        ? toast.error('Балів не достатньо')
+        : toast.error('Баллов недостаточно');
     } else {
       dispatch(toggleSelectedCardAction(_id, taskPoints, isSelected));
     }

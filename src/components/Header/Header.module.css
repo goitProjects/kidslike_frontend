@@ -42,21 +42,25 @@
 
 /* .lengBlock {
 } */
-.listLeng {
+.listLang {
   list-style: none;
   display: flex;
 }
-.listLengItem {
+.listLangItem {
   margin: 0 4px 0 0;
 }
-.listLengLink {
+.listLangButton {
   color: #000;
   font-size: 16px;
   display: block;
-  text-decoration: none;
   background-color: var(--color-light-orange);
+  border: none;
   border-radius: 5px;
-  padding: 1px 2px 2px 2px;
+  padding: 1px 2px;
+}
+.buttonActive {
+  composes: listLangButton;
+  background-color: var(--color-orange);
 }
 
 @media (min-width: 768px) {

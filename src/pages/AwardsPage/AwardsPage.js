@@ -12,8 +12,10 @@ import AwardsSubmitButton from '../../components/AwardsSubmitButton/AwardsSubmit
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import ModalCongrats from '../../components/ModalCongrats/ModalCongrats';
 import { submitAwardOperation } from '../../redux/awards/awardsOperation';
+import { getIsShowLengRu } from '../../redux/global/globalSelectors';
 
 //= =
+
 const arrT = [
   'сладости',
   'Поход в кино',
@@ -25,7 +27,18 @@ const arrT = [
   'Поход на каток',
 ];
 
-// const arr = [
+// const arrTRu = [
+//   'сладости',
+//   'Поход в кино',
+//   'подарок',
+//   'вечер пиццы',
+//   'Вечеринка с друзьями',
+//   'Поход в Макдональдс',
+//   'желание',
+//   'Поход на каток',
+// ];
+
+// const arrTUa = [
 //   'Солодощі',
 //   'Похід у кіно',
 //   'Подарунок',
@@ -39,15 +52,17 @@ const arrT = [
 //= =
 
 const AwardsPage = ({ isOpen, modalOpen, onClose, userPoints }) => {
+  const IsShowLengRu = useSelector(getIsShowLengRu);
+
   // const awards = useSelector(state => state.awards.arrayAwards);
 
   //= =
   // const aaa = awards.map(item => item.title);
-  // console.log('aaa', aaa);
   let awards = useSelector(state => state.awards.arrayAwards);
-  // console.log('awards000', awards);
-  awards = awards.map((item, idx) => ({ ...item, title: arrT[idx] }));
-  // console.log('awards111', awards);
+
+  if (IsShowLengRu) {
+    awards = awards.map((item, idx) => ({ ...item, title: arrT[idx] }));
+  }
 
   //= =
 

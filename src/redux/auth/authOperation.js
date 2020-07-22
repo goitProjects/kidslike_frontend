@@ -1,3 +1,4 @@
+/* eslint-disable */
 import axios from 'axios';
 import * as authActions from './authActions';
 import * as API from '../../services/api';
@@ -24,7 +25,9 @@ export const register = data => dispatch => {
 };
 
 export const login = data => dispatch => {
+  // console.log('data', data);
   dispatch(authActions.startLogin());
+
   API.loginUser(data)
     .then(res => {
       setToken(res.data.token);
@@ -32,7 +35,7 @@ export const login = data => dispatch => {
     })
     .catch(error => {
       // dispatch(authActions.errorLogin(error.response.data.error));
-      console.log(error);
+      // console.log(error);
     });
 };
 

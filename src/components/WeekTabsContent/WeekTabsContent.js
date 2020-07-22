@@ -9,6 +9,7 @@ import CurrentDay from '../CurrentDay/CurrentDay';
 import windowWidth from '../../utils/windowWidth';
 import days from '../../utils/days.json';
 import s from './WeekTabsContent.module.css';
+import { getIsShowLengRu } from '../../redux/global/globalSelectors';
 
 let dayName = null;
 let date = null;
@@ -16,7 +17,7 @@ let date = null;
 const momentObj = moment();
 
 //= =
-const arrT = [
+const arrTRu = [
   'Застелить кровать',
   'Пропилососить',
   'Полить цветы',
@@ -27,20 +28,21 @@ const arrT = [
   'Собрать игрушки',
 ];
 
-// const arr2 = [
-//   'Застеліті ліжко',
-//   'Пропілососіті',
-//   'Політі квіти',
-//   'почитати книгу',
-//   'Вікінуті сміття',
-//   'почистити зуби',
-//   'Підместі',
-//   'Скласти іграшки',
-// ];
+const arrTUa = [
+  'Застеліті ліжко',
+  'Пропілососіті',
+  'Політі квіти',
+  'почитати книгу',
+  'Вікінуті сміття',
+  'почистити зуби',
+  'Підместі',
+  'Скласти іграшки',
+];
 //= =
 
 const WeekTabsContent = () => {
   const { search } = useLocation();
+
   // const tasks = useSelector(state => state.tasks.items);
   // console.log('tasks', tasks);
 
@@ -52,12 +54,20 @@ const WeekTabsContent = () => {
   // console.log('bbb', bbb);
 
   let tasks = useSelector(state => state.tasks.items);
-  // console.log('tasks', tasks);
+  const IsShowLengRu = useSelector(getIsShowLengRu);
+
+  let arrT;
+  if (!IsShowLengRu) {
+    arrT = arrTUa;
+  } else {
+    arrT = arrTRu;
+  }
+
   tasks = tasks.map((item, idx) => ({
     ...item,
     title: arrT[idx] ? arrT[idx] : item.title,
   }));
-  // console.log(tasks);
+
   //= =
 
   const getWeekDay = () => {

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component, createRef } from 'react';
 import { connect } from 'react-redux';
 import { validateAll } from 'indicative/validator';
@@ -8,20 +9,21 @@ import { ReactComponent as Edit } from '../../assets/icons/icon edit/edit-24px.s
 import style from './NewTaskModal.module.css';
 import { NewTaskModalClosed } from '../../redux/global/globalActions';
 import { createTaskOperation } from '../../redux/tasks/tasksOperations';
+import { getIsShowLengRu } from '../../redux/global/globalSelectors';
 
 const validationRules = {
   title: 'max:20|required',
   taskPoints: 'number|integer|range:1,9|required',
 };
 
-// const validationMessages = {
-//   'title.required': "Це обов'язкове поле",
-//   'taskPoints.required': "Це обов'язкове поле",
-//   'title.max': 'не більше 20 символів',
-//   'taskPoints.range': 'має бути від 1 до 9 балів',
-// };
+const validationMessagesUa = {
+  'title.required': "Це обов'язкове поле",
+  'taskPoints.required': "Це обов'язкове поле",
+  'title.max': 'не більше 20 символів',
+  'taskPoints.range': 'має бути від 1 до 9 балів',
+};
 
-const validationMessages = {
+const validationMessagesRu = {
   'title.required': 'Это обязательное поле',
   'taskPoints.required': 'Это обязательное поле',
   'title.max': 'не более 20 символов',
@@ -34,6 +36,7 @@ class NewTaskModal extends Component {
   static propTypes = {
     onSave: PropTypes.func.isRequired,
     closeModal: PropTypes.func.isRequired,
+    IsShowLengRu: PropTypes.bool.isRequired,
   };
 
   state = {
@@ -53,6 +56,12 @@ class NewTaskModal extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { title, taskPoints } = this.state;
+
+    const { IsShowLengRu } = this.props;
+    let validationMessages;
+    !IsShowLengRu
+      ? (validationMessages = validationMessagesUa)
+      : (validationMessages = validationMessagesRu);
 
     validateAll({ title, taskPoints }, validationRules, validationMessages)
       .then(data => {
@@ -95,7 +104,69 @@ class NewTaskModal extends Component {
 
   render() {
     const { title, taskPoints, error } = this.state;
-    const { closeModal } = this.props;
+    const { closeModal, IsShowLengRu } = this.props;
+
+    if (!IsShowLengRu) {
+      return (
+        <div
+          onClick={this.handleBackdropClick}
+          role="presentation"
+          className={`${style.wrapper} ${style.overlay}`}
+          ref={this.overlayRef}
+        >
+          <div className={style.taskModal}>
+            <div className={style.taskImage}>
+              <button type="button" className={style.taskCloseButton}>
+                {' '}
+                <Cancel onClick={closeModal} />{' '}
+              </button>
+              <img src={imageRobot} alt="robot" />
+            </div>
+            <div className={style.taskForm}>
+              <form className={style.form} onSubmit={this.handleSubmit}>
+                <label htmlFor="text" className={style.textSection}>
+                  <Edit className={style.taskIconEdit} />
+                  <input
+                    className={style.taskInput}
+                    placeholder="Додати завдання..."
+                    // placeholder="Добавить задание..."
+                    type="text"
+                    name="title"
+                    value={title}
+                    onChange={this.handleChange}
+                  />
+                  {error && (
+                    <span className={`${style.titleError} ${style.error}`}>
+                      {error.title}
+                    </span>
+                  )}
+                </label>
+                <label htmlFor="number" className={style.pointsSection}>
+                  <Edit className={style.gradeIconEdit} />
+                  <input
+                    className={style.taskPoints}
+                    type="number"
+                    value={taskPoints}
+                    name="taskPoints"
+                    placeholder="Додати бали..."
+                    // placeholder="Добавить баллы..."
+                    onChange={this.handleChange}
+                  />
+                  {error && (
+                    <span className={`${style.pointError} ${style.error}`}>
+                      {error.taskPoints}
+                    </span>
+                  )}
+                </label>
+                <button className={style.taskSubmitButton} type="submit">
+                  Ок
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      );
+    }
 
     return (
       <div
@@ -159,9 +230,13 @@ class NewTaskModal extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  IsShowLengRu: getIsShowLengRu(state),
+});
+
 const mapDispatchProps = dispatch => ({
   onSave: data => dispatch(createTaskOperation(data)),
   closeModal: () => dispatch(NewTaskModalClosed()),
 });
 
-export default connect(null, mapDispatchProps)(NewTaskModal);
+export default connect(mapStateToProps, mapDispatchProps)(NewTaskModal);

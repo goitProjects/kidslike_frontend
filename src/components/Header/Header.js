@@ -3,11 +3,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-// import { Link, withRouter } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import * as moment from 'moment';
 import { connect } from 'react-redux';
-// import { compose } from 'redux';
 import slideTransition from '../../transitions/fade.module.css';
 import Navigation from '../Navigation/Navigation';
 import HeaderModal from '../HeaderModal/HeaderModal';
@@ -16,6 +14,7 @@ import UserInfo from '../UserInfo/UserInfo';
 import styles from './Header.module.css';
 import { ReactComponent as Logo } from '../../assets/icons/header-icons/burger.svg';
 import logoMobile from '../../assets/icons/header-icons/Logo_mobile.png';
+import { showLangRu, showLangUa } from '../../redux/global/globalActions';
 
 class Header extends Component {
   static propTypes = {
@@ -25,25 +24,25 @@ class Header extends Component {
 
   state = {
     isModalOpen: false,
+    langNow: 'ru',
   };
 
   openModal = () => this.setState({ isModalOpen: true });
 
   closeModal = () => this.setState({ isModalOpen: false });
 
-  /* Добавить язык в url */
-  addRuLeng = () => {
-    console.log(this.props);
-    // const { history, location } = this.props;
+  showLangRu = () => {
+    this.props.showRu();
+    this.setState({ langNow: 'ru' });
+  };
 
-    // history.push({
-    //   ...location,
-    //   search: `${location.search}&lang=ru`,
-    // });
+  showLangUa = () => {
+    this.props.showUa();
+    this.setState({ langNow: 'ua' });
   };
 
   render() {
-    const { isModalOpen } = this.state;
+    const { isModalOpen, langNow } = this.state;
     const unixDate = Date.now();
     const currentDay = moment().format('dddd');
     const { isAuth } = this.props;
@@ -72,34 +71,34 @@ class Header extends Component {
           <div className={styles.navControls}>
             <Navigation />
 
-            {/* <div className={styles.lengBlock}> */}
-            <ul className={styles.listLeng}>
-              <li className={styles.listLengItem}>
-                <button type="button" onClick={this.addRuLeng}>
+            <ul className={styles.listLang}>
+              <li className={styles.listLangItem}>
+                <button
+                  type="button"
+                  onClick={this.showLangRu}
+                  className={
+                    langNow === 'ru'
+                      ? styles.buttonActive
+                      : styles.listLangButton
+                  }
+                >
                   ru
                 </button>
-                {/* <a
-                  className={styles.listLengLink}
-                  href="/"
-                  // target="_blank"
-                >
-                  ru
-                </a> */}
               </li>
-              <li className={styles.listLengItem}>
-                {/* <button type="button" onClick={}>
-                  ua
-                </button> */}
-                {/* <a
-                  className={styles.listLengLink}
-                  href="https://kidslike.goit.co.ua"
-                  // target="_blank"
+              <li className={styles.listLangItem}>
+                <button
+                  type="button"
+                  onClick={this.showLangUa}
+                  className={
+                    langNow === 'ua'
+                      ? styles.buttonActive
+                      : styles.listLangButton
+                  }
                 >
                   ua
-                </a> */}
+                </button>
               </li>
             </ul>
-            {/* </div> */}
 
             <div className={styles.authModule}>
               {isAuth && <UserInfo />}
@@ -124,8 +123,9 @@ const mapStateToProps = state => ({
   isModalLogoutOpen: state.global.isModalLogoutOpen,
 });
 
-export default connect(mapStateToProps)(Header);
-// withRouter
-// compose
+const mapDispatchToProps = dispatch => ({
+  showRu: () => dispatch(showLangRu()),
+  showUa: () => dispatch(showLangUa()),
+});
 
-// export default compose(withRouter, connect(mapStateToProps))(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

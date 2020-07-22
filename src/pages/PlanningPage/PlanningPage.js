@@ -14,6 +14,7 @@ import MobileCurrentWeekPlaning from '../../components/CurrentWeekPlaning/Mobile
 import AddCustomTask from '../../components/PlanningPage/AddCustomTask';
 import MobileAddCustomTask from '../../components/PlanningPage/MobileAddCustomTask';
 import { changeTasksPlanningOperation } from '../../redux/tasks/tasksOperations';
+import { getIsShowLengRu } from '../../redux/global/globalSelectors';
 
 //= =
 const arrT = [
@@ -29,16 +30,20 @@ const arrT = [
 //= =
 
 const PlanningPage = () => {
+  const IsShowLengRu = useSelector(getIsShowLengRu);
+
   // const tasks = useSelector(state => state.tasks.items);
 
   //= =
   let tasks = useSelector(state => state.tasks.items);
-  // console.log('tasks', tasks);
-  tasks = tasks.map((item, idx) => ({
-    ...item,
-    title: arrT[idx] ? arrT[idx] : item.title,
-  }));
-  // console.log(tasks);
+
+  if (IsShowLengRu) {
+    tasks = tasks.map((item, idx) => ({
+      ...item,
+      title: arrT[idx] ? arrT[idx] : item.title,
+    }));
+  }
+
   //= =
 
   const history = useHistory();

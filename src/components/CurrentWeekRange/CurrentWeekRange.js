@@ -2,7 +2,9 @@ import React from 'react';
 import * as moment from 'moment';
 // import 'moment/locale/uk';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import s from './CurrentWeekRange.module.css';
+import { getIsShowLengRu } from '../../redux/global/globalSelectors';
 
 const CurrentWeekRange = () => {
   const startOfWeek = moment()
@@ -12,47 +14,57 @@ const CurrentWeekRange = () => {
     .endOf('week')
     .format('DD');
 
-  // console.log(startOfWeek);
-  // console.log(endOfWeek);
+  const isShowLangRu = useSelector(getIsShowLengRu);
 
   // функция получения месяца, из того что в сторе
   function getThisMonth() {
-    // const monthes = [
-    //   'сiчня',
-    //   'лютого',
-    //   'березеня',
-    //   'квiтня',
-    //   'травня',
-    //   'червня',
-    //   'липня',
-    //   'серпня',
-    //   'вересеня',
-    //   'жовтня',
-    //   'листопадя',
-    //   'грудня',
-    // ];
-
-    const monthes = [
-      'Января',
-      'Февраль',
-      'Марта',
-      'Апреля',
-      'Май',
-      'Июнь',
-      'Июль',
-      'Август',
-      'Сентябрь',
-      'октября',
-      'Ноябрь',
-      'Декабрь',
-    ];
-
-    // console.log(moment().get('M'));\
+    let monthes;
+    if (!isShowLangRu) {
+      monthes = [
+        'сiчня',
+        'лютого',
+        'березеня',
+        'квiтня',
+        'травня',
+        'червня',
+        'липня',
+        'серпня',
+        'вересеня',
+        'жовтня',
+        'листопадя',
+        'грудня',
+      ];
+    } else {
+      monthes = [
+        'Января',
+        'Февраль',
+        'Марта',
+        'Апреля',
+        'Май',
+        'Июнь',
+        'Июль',
+        'Август',
+        'Сентябрь',
+        'октября',
+        'Ноябрь',
+        'Декабрь',
+      ];
+    }
 
     return monthes[moment().get('M')];
   }
   const month = getThisMonth(moment().get('M'));
-  // console.log('month', month);
+
+  if (!isShowLangRu) {
+    return (
+      <div className={s.wrapper}>
+        <p className={s.week}>
+          Тиждень: {Number(startOfWeek)}-{Number(endOfWeek)} {month}
+          {/* Неделя: {Number(startOfWeek)}-{Number(endOfWeek)} {month} */}
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className={s.wrapper}>
