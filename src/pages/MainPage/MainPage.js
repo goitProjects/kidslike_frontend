@@ -63,10 +63,8 @@ const MainPage = () => {
   let days;
   if (!IsShowLengRu) {
     days = daysUa;
-    // console.log('days', days);
   } else {
     days = daysRu;
-    // console.log('days', days);
   }
 
   useEffect(() => {

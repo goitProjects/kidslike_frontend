@@ -16,6 +16,8 @@ import MobileAddCustomTask from '../../components/PlanningPage/MobileAddCustomTa
 import { changeTasksPlanningOperation } from '../../redux/tasks/tasksOperations';
 import { getIsShowLengRu } from '../../redux/global/globalSelectors';
 
+import daysRu from '../../utils/days.json';
+
 //= =
 const arrT = [
   'Застелить кровать',
@@ -38,8 +40,19 @@ const PlanningPage = () => {
   let tasks = useSelector(state => state.tasks.items);
 
   if (IsShowLengRu) {
+    // tasks = tasks.map((item, idx) => ({
+    //   ...item,
+    //   title: arrT[idx] ? arrT[idx] : item.title,
+    // }));
+
     tasks = tasks.map((item, idx) => ({
       ...item,
+      days: IsShowLengRu
+        ? item.days.map((day, idxD) => ({
+            ...day,
+            title: daysRu[idxD].shortName,
+          }))
+        : item.days,
       title: arrT[idx] ? arrT[idx] : item.title,
     }));
   }
