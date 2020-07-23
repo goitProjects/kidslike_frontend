@@ -63,8 +63,10 @@ const MainPage = () => {
   let days;
   if (!IsShowLengRu) {
     days = daysUa;
+    // console.log('days', days);
   } else {
     days = daysRu;
+    // console.log('days', days);
   }
 
   useEffect(() => {
@@ -73,6 +75,7 @@ const MainPage = () => {
 
   return (
     <div className={s.mainDiv}>
+      {console.log('RENDER')}
       {windowWidth < 768 && <WeekTabsMobile days={days} />}
       {windowWidth >= 768 && windowWidth < 1280 && (
         <WeekTabsTablet days={days} />

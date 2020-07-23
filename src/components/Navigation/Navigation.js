@@ -27,7 +27,7 @@ const Navigation = ({ isAuth }) => {
       path: routes.AUTH_PAGE.path,
       // name: 'Авторизація',
       // name: 'Авторизация',
-      name: !isShowLengRu ? 'Авторизація' : 'ГлаАвторизациявная',
+      name: !isShowLengRu ? 'Авторизація' : 'Авторизация',
       protected: false,
     },
     {

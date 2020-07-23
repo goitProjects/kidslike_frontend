@@ -7,7 +7,10 @@ import ContainerList from '../CardsList/index';
 import CurrentWeekRange from '../CurrentWeekRange/CurrentWeekRange';
 import CurrentDay from '../CurrentDay/CurrentDay';
 import windowWidth from '../../utils/windowWidth';
-import days from '../../utils/days.json';
+
+import daysRu from '../../utils/days.json';
+import daysUa from '../../utils/daysUkr.json';
+
 import s from './WeekTabsContent.module.css';
 import { getIsShowLengRu } from '../../redux/global/globalSelectors';
 
@@ -57,10 +60,13 @@ const WeekTabsContent = () => {
   const IsShowLengRu = useSelector(getIsShowLengRu);
 
   let arrT;
+  let days;
   if (!IsShowLengRu) {
     arrT = arrTUa;
+    days = daysUa;
   } else {
     arrT = arrTRu;
+    days = daysRu;
   }
 
   tasks = tasks.map((item, idx) => ({
