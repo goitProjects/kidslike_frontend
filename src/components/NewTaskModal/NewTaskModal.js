@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component, createRef } from 'react';
 import { connect } from 'react-redux';
 import { validateAll } from 'indicative/validator';
@@ -8,17 +9,25 @@ import { ReactComponent as Edit } from '../../assets/icons/icon edit/edit-24px.s
 import style from './NewTaskModal.module.css';
 import { NewTaskModalClosed } from '../../redux/global/globalActions';
 import { createTaskOperation } from '../../redux/tasks/tasksOperations';
+import { getIsShowLengRu } from '../../redux/global/globalSelectors';
 
 const validationRules = {
   title: 'max:20|required',
   taskPoints: 'number|integer|range:1,9|required',
 };
 
-const validationMessages = {
+const validationMessagesUa = {
   'title.required': "Це обов'язкове поле",
   'taskPoints.required': "Це обов'язкове поле",
   'title.max': 'не більше 20 символів',
   'taskPoints.range': 'має бути від 1 до 9 балів',
+};
+
+const validationMessagesRu = {
+  'title.required': 'Это обязательное поле',
+  'taskPoints.required': 'Это обязательное поле',
+  'title.max': 'не более 20 символов',
+  'taskPoints.range': 'должно быть от 1 до 9 баллов',
 };
 
 class NewTaskModal extends Component {
@@ -27,6 +36,7 @@ class NewTaskModal extends Component {
   static propTypes = {
     onSave: PropTypes.func.isRequired,
     closeModal: PropTypes.func.isRequired,
+    isShowLangRu: PropTypes.bool.isRequired,
   };
 
   state = {
@@ -46,6 +56,12 @@ class NewTaskModal extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { title, taskPoints } = this.state;
+
+    const { isShowLangRu } = this.props;
+    let validationMessages;
+    !isShowLangRu
+      ? (validationMessages = validationMessagesUa)
+      : (validationMessages = validationMessagesRu);
 
     validateAll({ title, taskPoints }, validationRules, validationMessages)
       .then(data => {
@@ -88,7 +104,7 @@ class NewTaskModal extends Component {
 
   render() {
     const { title, taskPoints, error } = this.state;
-    const { closeModal } = this.props;
+    const { closeModal, isShowLangRu } = this.props;
 
     return (
       <div
@@ -111,7 +127,9 @@ class NewTaskModal extends Component {
                 <Edit className={style.taskIconEdit} />
                 <input
                   className={style.taskInput}
-                  placeholder="Додати завдання..."
+                  placeholder={
+                    !isShowLangRu ? 'Додати завдання...' : 'Добавить задание...'
+                  }
                   type="text"
                   name="title"
                   value={title}
@@ -130,7 +148,9 @@ class NewTaskModal extends Component {
                   type="number"
                   value={taskPoints}
                   name="taskPoints"
-                  placeholder="Додати бали..."
+                  placeholder={
+                    !isShowLangRu ? 'Додати бали...' : 'Добавить баллы...'
+                  }
                   onChange={this.handleChange}
                 />
                 {error && (
@@ -150,9 +170,13 @@ class NewTaskModal extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  isShowLangRu: getIsShowLengRu(state),
+});
+
 const mapDispatchProps = dispatch => ({
   onSave: data => dispatch(createTaskOperation(data)),
   closeModal: () => dispatch(NewTaskModalClosed()),
 });
 
-export default connect(null, mapDispatchProps)(NewTaskModal);
+export default connect(mapStateToProps, mapDispatchProps)(NewTaskModal);

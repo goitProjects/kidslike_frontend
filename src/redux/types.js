@@ -67,6 +67,10 @@ const types = {
 
   // ----- add weekPlanTaskPoints -----
   ADD_WEEK_PLAN_TASK_POINTS: 'ADD_WEEK_PLAN_TASK_POINTS',
+
+  // ----- showNeedLang ----- +
+  SHOW_LANG_RU: 'SHOW_LANG_RU',
+  SHOW_LANG_UA: 'SHOW_LANG_UA',
 };
 
 export default types;

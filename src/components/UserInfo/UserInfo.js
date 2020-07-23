@@ -1,9 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './UserInfo.module.css';
 import { ModalLogoutOpen } from '../../redux/global/globalActions';
 import defaultuserlogo from '../../assets/icons/userinfo/UserInfoLogo.jpg';
+import { getIsShowLengRu } from '../../redux/global/globalSelectors';
 
 const changeUserName = name => {
   if (name.indexOf(' ') !== -1) {
@@ -21,6 +22,9 @@ const changeUserName = name => {
 
 const UserInfo = ({ isModalLogoutOpen, user }) => {
   const defaultName = user.email;
+
+  const isShowLangRu = useSelector(getIsShowLengRu);
+
   return (
     <div>
       <div className={styles.userinfobox}>
@@ -39,7 +43,7 @@ const UserInfo = ({ isModalLogoutOpen, user }) => {
           type="button"
           className={styles.userinfobutton}
         >
-          Вийти
+          {!isShowLangRu ? 'Вийти' : 'Выйти'}
         </button>
       </div>
     </div>

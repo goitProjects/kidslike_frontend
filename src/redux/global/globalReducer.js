@@ -65,9 +65,26 @@ const ModalLogoutReducer = (state = false, action) => {
   }
 };
 
+// ----------isShowLengRuReducer ------------------- +
+
+const isShowLengRuReducer = (state = true, action) => {
+  switch (action.type) {
+    case types.SHOW_LANG_RU:
+      return true;
+
+    case types.SHOW_LANG_UA:
+      return false;
+
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   isLoading: loaderReducer,
   isNewTaskModalOpen: newTaskModalReducer,
   isModalCongratsOpen: ModalCongratsReducer,
   isModalLogoutOpen: ModalLogoutReducer,
+
+  isShowLengRu: isShowLengRuReducer,
 });

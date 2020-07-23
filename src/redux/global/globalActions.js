@@ -36,3 +36,12 @@ export const ModalLogoutClosed = () => ({
   type: types.MODAL_LOGOUT_CLOSED,
   payload: false,
 });
+
+// ----------showNeedLang------------------- +
+export const showLangRu = () => ({
+  type: types.SHOW_LANG_RU,
+});
+
+export const showLangUa = () => ({
+  type: types.SHOW_LANG_UA,
+});

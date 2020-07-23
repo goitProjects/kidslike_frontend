@@ -12,9 +12,60 @@ import AwardsSubmitButton from '../../components/AwardsSubmitButton/AwardsSubmit
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import ModalCongrats from '../../components/ModalCongrats/ModalCongrats';
 import { submitAwardOperation } from '../../redux/awards/awardsOperation';
+import { getIsShowLengRu } from '../../redux/global/globalSelectors';
+
+//= =
+
+const arrT = [
+  'сладости',
+  'Поход в кино',
+  'подарок',
+  'вечер пиццы',
+  'Вечеринка с друзьями',
+  'Поход в Макдональдс',
+  'желание',
+  'Поход на каток',
+];
+
+// const arrTRu = [
+//   'сладости',
+//   'Поход в кино',
+//   'подарок',
+//   'вечер пиццы',
+//   'Вечеринка с друзьями',
+//   'Поход в Макдональдс',
+//   'желание',
+//   'Поход на каток',
+// ];
+
+// const arrTUa = [
+//   'Солодощі',
+//   'Похід у кіно',
+//   'Подарунок',
+//   'Вечір піцци',
+//   'Вечірка з друзями',
+//   'Похід у Макдональдс',
+//   'Бажання',
+//   'Похід на ковзанку',
+// ];
+
+//= =
 
 const AwardsPage = ({ isOpen, modalOpen, onClose, userPoints }) => {
-  const awards = useSelector(state => state.awards.arrayAwards);
+  const IsShowLengRu = useSelector(getIsShowLengRu);
+
+  // const awards = useSelector(state => state.awards.arrayAwards);
+
+  //= =
+  // const aaa = awards.map(item => item.title);
+  let awards = useSelector(state => state.awards.arrayAwards);
+
+  if (IsShowLengRu) {
+    awards = awards.map((item, idx) => ({ ...item, title: arrT[idx] }));
+  }
+
+  //= =
+
   const activeButton = useSelector(state => state.awards.totalPoints);
 
   return (

@@ -14,9 +14,51 @@ import MobileCurrentWeekPlaning from '../../components/CurrentWeekPlaning/Mobile
 import AddCustomTask from '../../components/PlanningPage/AddCustomTask';
 import MobileAddCustomTask from '../../components/PlanningPage/MobileAddCustomTask';
 import { changeTasksPlanningOperation } from '../../redux/tasks/tasksOperations';
+import { getIsShowLengRu } from '../../redux/global/globalSelectors';
+
+import daysRu from '../../utils/days.json';
+
+//= =
+const arrT = [
+  'Застелить кровать',
+  'Пропилососить',
+  'Полить цветы',
+  'Почитать книгу',
+  'Выкинуть мусор',
+  'Почистить зубы',
+  'Подмести',
+  'Собрать игрушки',
+];
+//= =
 
 const PlanningPage = () => {
-  const tasks = useSelector(state => state.tasks.items);
+  const isShowLangRu = useSelector(getIsShowLengRu);
+
+  // const tasks = useSelector(state => state.tasks.items);
+
+  //= =
+  let tasks = useSelector(state => state.tasks.items);
+
+  if (isShowLangRu) {
+    // tasks = tasks.map((item, idx) => ({
+    //   ...item,
+    //   title: arrT[idx] ? arrT[idx] : item.title,
+    // }));
+
+    tasks = tasks.map((item, idx) => ({
+      ...item,
+      days: isShowLangRu
+        ? item.days.map((day, idxD) => ({
+            ...day,
+            title: daysRu[idxD].shortName,
+          }))
+        : item.days,
+      title: arrT[idx] ? arrT[idx] : item.title,
+    }));
+  }
+
+  //= =
+
   const history = useHistory();
   const dispatch = useDispatch();
 

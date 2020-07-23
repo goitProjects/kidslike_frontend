@@ -59,7 +59,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-left: 1rem;
+    /* margin-left: 1rem; */
   }
   .userinfobutton {
     display: none;
@@ -73,9 +73,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-left: 3rem;
+    /* margin-left: 3rem; */
   }
   .userinfobutton {
     display: block;
   }
 }
+
+/* userData - убираю маржин влево */

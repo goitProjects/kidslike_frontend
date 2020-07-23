@@ -11,11 +11,13 @@ import { fetchingTask } from '../../components/CardsList/CardsListModule';
 import 'react-toastify/dist/ReactToastify.css';
 import { getToken } from '../auth/authSelectors';
 import { getTasks } from './tasksSelector';
+import { getIsShowLengRu } from '../global/globalSelectors';
 
 toast.configure();
 
 export const createTaskOperation = task => (dispatch, getState) => {
   const token = getToken(getState());
+  const IsShowLengRu = getIsShowLengRu(getState());
 
   if (!token) return;
   dispatch(startCreateTaskAction());
@@ -23,12 +25,19 @@ export const createTaskOperation = task => (dispatch, getState) => {
   postTask(task, token)
     .then(res => {
       dispatch(successCreateTaskAction(res.data.tasks));
-      toast.info('🦄 Завдання додано!', {
-        autoClose: 2000,
-      });
+      toast.info(
+        IsShowLengRu ? '🦄 Задача добавлена!' : '🦄 Завдання додано!',
+        {
+          autoClose: 2000,
+        },
+      );
     })
     .catch(() => {
-      toast.error('🙈 Завдання не додано! Помилка!');
+      toast.error(
+        IsShowLengRu
+          ? '🙈 Задача не добавлена! Ошибка!'
+          : '🙈 Завдання не додано! Помилка!',
+      );
       return dispatch(errorCreateTaskAction());
     });
 };

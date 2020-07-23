@@ -40,6 +40,29 @@
   display: block;
 }
 
+/* .lengBlock {
+} */
+.listLang {
+  list-style: none;
+  display: flex;
+}
+.listLangItem {
+  margin: 0 4px 0 0;
+}
+.listLangButton {
+  color: #000;
+  font-size: 16px;
+  display: block;
+  background-color: var(--color-light-orange);
+  border: none;
+  border-radius: 5px;
+  padding: 1px 2px;
+}
+.buttonActive {
+  composes: listLangButton;
+  background-color: var(--color-orange);
+}
+
 @media (min-width: 768px) {
   .navControls {
     min-width: 200px;
@@ -52,6 +75,8 @@
   }
   .navControls {
     min-width: 700px;
-    place-content: flex-end;
+
+    justify-content: space-between; /* + */
   }
 }
+/* navControls - добавил свойство на 1280: */

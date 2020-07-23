@@ -11,18 +11,27 @@ import 'react-toastify/dist/ReactToastify.css';
 import * as authSelectors from '../../redux/auth/authSelectors';
 import * as authActions from '../../redux/auth/authActions';
 import Loader from '../Loader/Loader';
+import { getIsShowLengRu } from '../../redux/global/globalSelectors';
 
 const validationRules = {
   email: 'required|email',
   password: 'required|min:6|max:12',
 };
 
-const validationMessages = {
+const validationMessagesUa = {
   'email.required': "Це обов'язкове поле!",
   'password.required': "Це обов'язкове поле!",
   'email.email': 'Введіть валідну електронну пошту!',
   'password.min': 'Пароль має бути не менше 6 символів!',
   'password.max': 'Пароль має бути не більше 12 символів!',
+};
+
+const validationMessages = {
+  'email.required': 'Это обязательное поле!',
+  'password.required': 'Это обязательное поле!',
+  'email.email': 'Введите валидную электронную почту!',
+  'password.min': 'Пароль должен быть не менее 6 символов!',
+  'password.max': 'Пароль должен быть не более 12 символов!',
 };
 
 class AuthForm extends Component {
@@ -36,6 +45,8 @@ class AuthForm extends Component {
     cleanError: PropTypes.func.isRequired,
     serverError: PropTypes.string,
     serverIsLoading: PropTypes.bool.isRequired,
+
+    isShowLangRu: PropTypes.bool.isRequired,
   };
 
   state = { email: '', password: '', error: null, typeSubmit: '' };
@@ -46,7 +57,7 @@ class AuthForm extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    const { serverError, serverIsLoading } = this.props;
+    const { serverError, serverIsLoading, isShowLangRu } = this.props;
 
     if (
       prevProps.serverError !== serverError &&
@@ -56,14 +67,19 @@ class AuthForm extends Component {
       switch (serverError) {
         case 'users was not saved':
           toast.error(
-            'Користувач з такою электронную поштою вже зареєстрований!',
+            !isShowLangRu
+              ? 'Користувач з такою электронную поштою не зареєстрований!!'
+              : 'Пользователь с таким электронную почте не зарегистрирован!!',
             { position: toast.POSITION.TOP_CENTER },
           );
           break;
 
         case 'User in not defined':
           toast.error(
-            'Користувач з такою электронную поштою не зареєстрований!!',
+            !isShowLangRu
+              ? 'Користувач з такою электронную поштою не зареєстрований!!'
+              : 'Пользователь с таким электронную почте не зарегистрирован!!',
+
             {
               position: toast.POSITION.TOP_CENTER,
             },
@@ -71,9 +87,14 @@ class AuthForm extends Component {
           break;
 
         case 'Password is invalid':
-          toast.error('Введений пароль невірний!', {
-            position: toast.POSITION.TOP_CENTER,
-          });
+          toast.error(
+            !isShowLangRu
+              ? 'Введений пароль невірний!'
+              : 'Введенный пароль неверный!',
+            {
+              position: toast.POSITION.TOP_CENTER,
+            },
+          );
           break;
 
         default:
@@ -97,11 +118,15 @@ class AuthForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { typeSubmit, email, password } = this.state;
-    const { onLogin, onRegister } = this.props;
+    const { onLogin, onRegister, isShowLangRu } = this.props;
 
     this.cleanErr();
 
-    validateAll({ email, password }, validationRules, validationMessages)
+    validateAll(
+      { email, password },
+      validationRules,
+      isShowLangRu ? validationMessages : validationMessagesUa,
+    )
       .then(() => {
         if (typeSubmit === 'register') {
           onRegister({ email, password });
@@ -126,14 +151,16 @@ class AuthForm extends Component {
 
   render() {
     const { email, password, error } = this.state;
-    const { serverIsLoading } = this.props;
+    const { serverIsLoading, isShowLangRu } = this.props;
 
     return (
       <>
         <div className={s.auth}>
           <div className={s.auth__wrapper}>
             <p className={`${s.auth__description} ${s.description__first}`}>
-              Ви можете авторизуватися за допомогою Google Account:
+              {!isShowLangRu
+                ? 'Ви можете авторизуватися за допомогою Google Account:'
+                : 'Вы можете авторизоваться с помощью Google Account:'}
             </p>
             <a
               className={s.auth__link__google}
@@ -145,8 +172,9 @@ class AuthForm extends Component {
               </div>
             </a>
             <p className={`${s.auth__description} ${s.description__second}`}>
-              Або зайти за допомогою e-mail та паролю, попередньо
-              зареєструвавшись:
+              {!isShowLangRu
+                ? 'Або зайти за допомогою e-mail та паролю, попередньо зареєструвавшись:'
+                : 'Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:'}
             </p>
 
             <form autoComplete="off" onSubmit={this.handleSubmit}>
@@ -186,14 +214,14 @@ class AuthForm extends Component {
                   className={s.auth__button}
                   type="submit"
                 >
-                  Увійти
+                  {!isShowLangRu ? 'Увійти' : 'Войти'}
                 </button>
                 <button
                   onClick={() => this.setTypeSubmit('register')}
                   className={s.auth__button}
                   type="submit"
                 >
-                  Зареєструватися
+                  {!isShowLangRu ? 'Зареєструватися' : 'Зарегистрироваться'}
                 </button>
               </div>
             </form>
@@ -209,6 +237,8 @@ class AuthForm extends Component {
 const mapStateToProps = store => ({
   serverError: authSelectors.getServerError(store),
   serverIsLoading: authSelectors.getServerIsLoading(store),
+
+  isShowLangRu: getIsShowLengRu(store),
 });
 
 const mapDispatchToProps = dispatch => ({

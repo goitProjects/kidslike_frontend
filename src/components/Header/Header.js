@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -12,6 +14,7 @@ import UserInfo from '../UserInfo/UserInfo';
 import styles from './Header.module.css';
 import { ReactComponent as Logo } from '../../assets/icons/header-icons/burger.svg';
 import logoMobile from '../../assets/icons/header-icons/Logo_mobile.png';
+import { showLangRu, showLangUa } from '../../redux/global/globalActions';
 
 class Header extends Component {
   static propTypes = {
@@ -21,14 +24,25 @@ class Header extends Component {
 
   state = {
     isModalOpen: false,
+    langNow: 'ru',
   };
 
   openModal = () => this.setState({ isModalOpen: true });
 
   closeModal = () => this.setState({ isModalOpen: false });
 
+  showLangRu = () => {
+    this.props.showRu();
+    this.setState({ langNow: 'ru' });
+  };
+
+  showLangUa = () => {
+    this.props.showUa();
+    this.setState({ langNow: 'ua' });
+  };
+
   render() {
-    const { isModalOpen } = this.state;
+    const { isModalOpen, langNow } = this.state;
     const unixDate = Date.now();
     const currentDay = moment().format('dddd');
     const { isAuth } = this.props;
@@ -53,8 +67,39 @@ class Header extends Component {
           >
             <img className={styles.siteLogo} alt="SiteLogo" src={logoMobile} />
           </Link>
+
           <div className={styles.navControls}>
             <Navigation />
+
+            <ul className={styles.listLang}>
+              <li className={styles.listLangItem}>
+                <button
+                  type="button"
+                  onClick={this.showLangRu}
+                  className={
+                    langNow === 'ru'
+                      ? styles.buttonActive
+                      : styles.listLangButton
+                  }
+                >
+                  ru
+                </button>
+              </li>
+              <li className={styles.listLangItem}>
+                <button
+                  type="button"
+                  onClick={this.showLangUa}
+                  className={
+                    langNow === 'ua'
+                      ? styles.buttonActive
+                      : styles.listLangButton
+                  }
+                >
+                  ua
+                </button>
+              </li>
+            </ul>
+
             <div className={styles.authModule}>
               {isAuth && <UserInfo />}
               <button
@@ -78,4 +123,9 @@ const mapStateToProps = state => ({
   isModalLogoutOpen: state.global.isModalLogoutOpen,
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = dispatch => ({
+  showRu: () => dispatch(showLangRu()),
+  showUa: () => dispatch(showLangUa()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
