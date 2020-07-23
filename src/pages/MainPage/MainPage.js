@@ -55,13 +55,13 @@ const setMainPath = () => {
 };
 
 const MainPage = () => {
-  const IsShowLengRu = useSelector(getIsShowLengRu);
+  const isShowLangRu = useSelector(getIsShowLengRu);
 
   const history = useHistory();
   const day = setMainPath();
 
   let days;
-  if (!IsShowLengRu) {
+  if (!isShowLangRu) {
     days = daysUa;
   } else {
     days = daysRu;

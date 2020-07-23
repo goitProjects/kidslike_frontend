@@ -55,23 +55,17 @@ const CurrentWeekRange = () => {
   }
   const month = getThisMonth(moment().get('M'));
 
-  if (!isShowLangRu) {
-    return (
-      <div className={s.wrapper}>
-        <p className={s.week}>
-          Тиждень: {Number(startOfWeek)}-{Number(endOfWeek)} {month}
-          {/* Неделя: {Number(startOfWeek)}-{Number(endOfWeek)} {month} */}
-        </p>
-      </div>
-    );
-  }
-
   return (
     <div className={s.wrapper}>
-      <p className={s.week}>
-        {/* Тиждень: {Number(startOfWeek)}-{Number(endOfWeek)} {month} */}
-        Неделя: {Number(startOfWeek)}-{Number(endOfWeek)} {month}
-      </p>
+      {!isShowLangRu ? (
+        <p className={s.week}>
+          Тиждень: {Number(startOfWeek)}-{Number(endOfWeek)} {month}
+        </p>
+      ) : (
+        <p className={s.week}>
+          Неделя: {Number(startOfWeek)}-{Number(endOfWeek)} {month}
+        </p>
+      )}
     </div>
   );
 };

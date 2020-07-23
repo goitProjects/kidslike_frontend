@@ -10,7 +10,7 @@ import { getIsShowLengRu } from '../../redux/global/globalSelectors';
 const Navigation = ({ isAuth }) => {
   const currentDay = moment().format('dddd');
 
-  const isShowLengRu = useSelector(getIsShowLengRu);
+  const isShowLangRu = useSelector(getIsShowLengRu);
 
   const menuItemsArr = [
     {
@@ -18,34 +18,27 @@ const Navigation = ({ isAuth }) => {
         pathname: '/',
         search: `?day=${currentDay}&unix-date=${Date.now()}`,
       },
-      // name: 'Головна',
-      // name: 'Главная',
-      name: !isShowLengRu ? 'Головна' : 'Главная',
+      name: !isShowLangRu ? 'Головна' : 'Главная',
       protected: true,
     },
     {
       path: routes.AUTH_PAGE.path,
-      // name: 'Авторизація',
-      // name: 'Авторизация',
-      name: !isShowLengRu ? 'Авторизація' : 'Авторизация',
+      name: !isShowLangRu ? 'Авторизація' : 'Авторизация',
       protected: false,
     },
     {
       path: routes.PLANNING_PAGE.path,
-      // name: 'Планирование',
-      name: !isShowLengRu ? 'Планування' : 'Планирование',
+      name: !isShowLangRu ? 'Планування' : 'Планирование',
       protected: true,
     },
     {
       path: routes.AWARDS_PAGE.path,
-      // name: 'Награды',
-      name: !isShowLengRu ? 'Нагороди' : 'Награды',
+      name: !isShowLangRu ? 'Нагороди' : 'Награды',
       protected: true,
     },
     {
       path: routes.CONTACTS_PAGE.path,
-      // name: 'Контакты',
-      name: !isShowLengRu ? 'Контакти' : 'Контакты',
+      name: !isShowLangRu ? 'Контакти' : 'Контакты',
       protected: false,
     },
   ];

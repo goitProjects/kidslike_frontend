@@ -32,14 +32,14 @@ const arrT = [
 //= =
 
 const PlanningPage = () => {
-  const IsShowLengRu = useSelector(getIsShowLengRu);
+  const isShowLangRu = useSelector(getIsShowLengRu);
 
   // const tasks = useSelector(state => state.tasks.items);
 
   //= =
   let tasks = useSelector(state => state.tasks.items);
 
-  if (IsShowLengRu) {
+  if (isShowLangRu) {
     // tasks = tasks.map((item, idx) => ({
     //   ...item,
     //   title: arrT[idx] ? arrT[idx] : item.title,
@@ -47,7 +47,7 @@ const PlanningPage = () => {
 
     tasks = tasks.map((item, idx) => ({
       ...item,
-      days: IsShowLengRu
+      days: isShowLangRu
         ? item.days.map((day, idxD) => ({
             ...day,
             title: daysRu[idxD].shortName,

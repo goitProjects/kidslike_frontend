@@ -15,26 +15,11 @@ const CurrentWeekPlaning = () => {
 
   const isShowLangRu = useSelector(getIsShowLengRu);
 
-  if (!isShowLangRu) {
-    return (
-      <>
-        <p className={s.wrapper}>
-          План на тиждень:
-          {/* План на неделю: */}
-          <span className={s.week}>
-            {' '}
-            {startOfWeek} - {endOfWeek}{' '}
-          </span>
-        </p>
-      </>
-    );
-  }
-
   return (
     <>
       <p className={s.wrapper}>
-        {/* План на тиждень: */}
-        План на неделю:
+        {!isShowLangRu ? 'План на тиждень:' : 'План на неделю:'}
+
         <span className={s.week}>
           {' '}
           {startOfWeek} - {endOfWeek}{' '}

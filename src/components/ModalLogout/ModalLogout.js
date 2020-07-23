@@ -15,65 +15,32 @@ const ModalLogout = ({ onCloseModalLogout, onLogout }) => {
     onCloseModalLogout();
   };
 
-  const IsShowLengRu = useSelector(getIsShowLengRu);
-
-  if (!IsShowLengRu) {
-    return (
-      <>
-        <ModalBackdrop onClose={onCloseModalLogout}>
-          <div className={styleModalLogout.modalSize}>
-            <h2 className={styleModalLogout.modalTitleText}>
-              Ви дійсно бажаєте вийти?
-              {/* Вы действительно хотите выйти? */}
-            </h2>
-
-            <div className={styleModalLogout.prizeContainer} />
-            <div className={styleModalLogout.buttonContainer}>
-              <button
-                className={styleModalLogout.point_amount}
-                onClick={handleLogout}
-              >
-                Так
-                {/* Да */}
-              </button>
-              <button
-                onClick={onCloseModalLogout}
-                className={styleModalLogout.point_amount}
-              >
-                Ні
-                {/* Нет */}
-              </button>
-            </div>
-          </div>
-        </ModalBackdrop>
-      </>
-    );
-  }
+  const isShowLangRu = useSelector(getIsShowLengRu);
 
   return (
     <>
       <ModalBackdrop onClose={onCloseModalLogout}>
         <div className={styleModalLogout.modalSize}>
           <h2 className={styleModalLogout.modalTitleText}>
-            {/* Ви дійсно бажаєте вийти? */}
-            Вы действительно хотите выйти?
+            {!isShowLangRu
+              ? 'Ви дійсно бажаєте вийти?'
+              : 'Вы действительно хотите выйти?'}
           </h2>
 
           <div className={styleModalLogout.prizeContainer} />
+
           <div className={styleModalLogout.buttonContainer}>
             <button
               className={styleModalLogout.point_amount}
               onClick={handleLogout}
             >
-              {/* Так */}
-              Да
+              {!isShowLangRu ? 'Так' : 'Да'}
             </button>
             <button
               onClick={onCloseModalLogout}
               className={styleModalLogout.point_amount}
             >
-              {/* Ні */}
-              Нет
+              {!isShowLangRu ? 'Ні' : 'Нет'}
             </button>
           </div>
         </div>

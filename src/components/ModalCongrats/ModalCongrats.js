@@ -14,64 +14,7 @@ const ModalCongrats = ({ onClose, awards, userPoints }) => {
   const filteredAwards = awards.filter(award => award.isSelected);
   const result = filteredAwards.reduce((acc, el) => acc + el.taskPoints, 0);
 
-  const IsShowLengRu = useSelector(getIsShowLengRu);
-
-  if (!IsShowLengRu) {
-    return (
-      <>
-        <ModalBackdrop onClose={onClose}>
-          <div className={styleModalCongrats.modalSize}>
-            <img className={styleModalCongrats.catTop} src={catTop} alt="" />
-            <h2 className={styleModalCongrats.modalTitleText}>
-              Вітаємо! Ти отримуєш:
-              {/* Поздравляем! Ты получаешь: */}
-            </h2>
-            <div className={styleModalCongrats.prizeContainer}>
-              <ul className={styleModalCongrats.prizeContainerList}>
-                {filteredAwards.map(el => (
-                  <li
-                    key={el._id}
-                    className={styleModalCongrats.prizeContainerItem}
-                  >
-                    {/* {el.title} */}
-                    {/* <img src={`.${el.imgName}`} alt="" /> */}
-                    <CardBody
-                      img={el.imgName}
-                      alt={el.title}
-                      addClass={styleModalCongrats.imagePrize}
-                    />
-
-                    <p className={styleModalCongrats.prizeContainerItemText}>
-                      {el.taskPoints}
-                      балів
-                      {/* баллов */}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <p className={styleModalCongrats.prizeContainerItemText}>
-              Сумарна кількість балів: {result}
-              {/* Суммарное количество баллов: {result} */}
-            </p>
-
-            <div className={styleModalCongrats.buttonContainer}>
-              {/* <button className={styleModalLogout.point_amount_long}>
-              <p className={styleModalLogout.point_amount_p}>Підтвердити!</p>
-            </button> */}
-              {/* <AwardsSubmitButton buttonText="Підтвердити" onClick={userPoints} /> */}
-
-              <AwardsSubmitButton
-                buttonText="Підтвердити"
-                onClick={userPoints}
-              />
-            </div>
-          </div>
-        </ModalBackdrop>
-      </>
-    );
-  }
+  const isShowLangRu = useSelector(getIsShowLengRu);
 
   return (
     <>
@@ -79,8 +22,9 @@ const ModalCongrats = ({ onClose, awards, userPoints }) => {
         <div className={styleModalCongrats.modalSize}>
           <img className={styleModalCongrats.catTop} src={catTop} alt="" />
           <h2 className={styleModalCongrats.modalTitleText}>
-            {/* Вітаємо! Ти отримуєш: */}
-            Поздравляем! Ты получаешь:
+            {!isShowLangRu
+              ? 'Вітаємо! Ти отримуєш:'
+              : 'Поздравляем! Ты получаешь:'}
           </h2>
           <div className={styleModalCongrats.prizeContainer}>
             <ul className={styleModalCongrats.prizeContainerList}>
@@ -99,18 +43,22 @@ const ModalCongrats = ({ onClose, awards, userPoints }) => {
 
                   <p className={styleModalCongrats.prizeContainerItemText}>
                     {el.taskPoints}
-                    {/* балів */}
-                    баллов
+                    {!isShowLangRu ? 'балів' : 'баллов'}
                   </p>
                 </li>
               ))}
             </ul>
           </div>
 
-          <p className={styleModalCongrats.prizeContainerItemText}>
-            {/* Сумарна кількість балів: {result} */}
-            Суммарное количество баллов: {result}
-          </p>
+          {!isShowLangRu ? (
+            <p className={styleModalCongrats.prizeContainerItemText}>
+              Сумарна кількість балів: {result}
+            </p>
+          ) : (
+            <p className={styleModalCongrats.prizeContainerItemText}>
+              Суммарное количество баллов: {result}
+            </p>
+          )}
 
           <div className={styleModalCongrats.buttonContainer}>
             {/* <button className={styleModalLogout.point_amount_long}>
@@ -118,7 +66,7 @@ const ModalCongrats = ({ onClose, awards, userPoints }) => {
             </button> */}
             {/* <AwardsSubmitButton buttonText="Підтвердити" onClick={userPoints} /> */}
 
-            <AwardsSubmitButton buttonText="Подтвердить" onClick={userPoints} />
+            <AwardsSubmitButton buttonText="Підтвердити" onClick={userPoints} />
           </div>
         </div>
       </ModalBackdrop>

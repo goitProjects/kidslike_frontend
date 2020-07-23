@@ -9,32 +9,15 @@ import withAuthRedirect from '../../hoc/withAuthRedirect';
 import { getIsShowLengRu } from '../../redux/global/globalSelectors';
 
 const AuthPage = props => {
-  const IsShowLengRu = useSelector(getIsShowLengRu);
+  const isShowLangRu = useSelector(getIsShowLengRu);
 
   const { location, setToken } = props;
+
   if (location.search) {
     const token = new URLSearchParams(location.search).get('token');
     if (token) {
       setToken(token);
     }
-  }
-
-  if (!IsShowLengRu) {
-    return (
-      <>
-        <div className={styles.bck__color}>
-          <div className={styles.auth__bck}>
-            <div className={styles.container}>
-              <h2 className={styles.auth__title}>
-                Виконуй завдання, отримай класні призи!
-                {/* Выполняй задания, получи классные призы! */}
-              </h2>
-              <AuthForm />
-            </div>
-          </div>
-        </div>
-      </>
-    );
   }
 
   return (
@@ -43,8 +26,9 @@ const AuthPage = props => {
         <div className={styles.auth__bck}>
           <div className={styles.container}>
             <h2 className={styles.auth__title}>
-              {/* Виконуй завдання, отримай класні призи! */}
-              Выполняй задания, получи классные призы!
+              {!isShowLangRu
+                ? 'Виконуй завдання, отримай класні призи!'
+                : 'Выполняй задания, получи классные призы!'}
             </h2>
             <AuthForm />
           </div>

@@ -6,15 +6,13 @@ import Contacts from '../../utils/contactsInfo.js';
 import { getIsShowLengRu } from '../../redux/global/globalSelectors';
 
 const ContactsPage = () => {
-  const IsShowLengRu = useSelector(getIsShowLengRu);
+  const isShowLangRu = useSelector(getIsShowLengRu);
 
   return (
     <div className={styles.contacts}>
       <p className={styles.contacts_main_tittle}>Наша команда</p>
       <p className={styles.contacts_second_tittle}>
-        {/* Завжди готові до нових викликів! */}
-        {/* Всегда готовы к новым вызовам! */}
-        {!IsShowLengRu
+        {!isShowLangRu
           ? 'Завжди готові до нових викликів!'
           : 'Всегда готовы к новым вызовам!'}
       </p>

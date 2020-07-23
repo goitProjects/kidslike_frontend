@@ -23,33 +23,26 @@ const HeaderModal = ({ isAuth, onClose, isModalLogoutOpen }) => {
         pathname: '/',
         search: `?day=${currentDay}&unix-date=${Date.now()}`,
       },
-      // name: 'Головна',
-      // name: 'Главная',
       name: !isShowLengRu ? 'Головна' : 'Главная',
       protected: true,
     },
     {
       path: routes.AUTH_PAGE.path,
-      // name: 'Авторизація',
-      // name: 'Авторизация',
       name: !isShowLengRu ? 'Авторизація' : 'ГлаАвторизациявная',
       protected: false,
     },
     {
       path: routes.PLANNING_PAGE.path,
-      // name: 'Планирование',
       name: !isShowLengRu ? 'Планування' : 'Планирование',
       protected: true,
     },
     {
       path: routes.AWARDS_PAGE.path,
-      // name: 'Награды',
       name: !isShowLengRu ? 'Нагороди' : 'Награды',
       protected: true,
     },
     {
       path: routes.CONTACTS_PAGE.path,
-      // name: 'Контакты',
       name: !isShowLengRu ? 'Контакти' : 'Контакты',
       protected: false,
     },
@@ -72,12 +65,14 @@ const HeaderModal = ({ isAuth, onClose, isModalLogoutOpen }) => {
       </NavLink>
     </li>
   ));
+
   const closeModalOverlay = e => {
     if (e.currentTarget && e.target !== e.currentTarget) {
       return;
     }
     onClose();
   };
+
   return (
     <div
       onClick={closeModalOverlay}
@@ -94,8 +89,6 @@ const HeaderModal = ({ isAuth, onClose, isModalLogoutOpen }) => {
             onClick={handleMenuClose}
           >
             {!isShowLengRu ? 'Вийти' : 'Выйти'}
-            {/* Вийти */}
-            {/* Выйти */}
           </button>
         )}
       </div>

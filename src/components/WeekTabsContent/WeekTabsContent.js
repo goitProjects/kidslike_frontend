@@ -57,11 +57,11 @@ const WeekTabsContent = () => {
   // console.log('bbb', bbb);
 
   let tasks = useSelector(state => state.tasks.items);
-  const IsShowLengRu = useSelector(getIsShowLengRu);
+  const isShowLangRu = useSelector(getIsShowLengRu);
 
   let arrT;
   let days;
-  if (!IsShowLengRu) {
+  if (!isShowLangRu) {
     arrT = arrTUa;
     days = daysUa;
   } else {

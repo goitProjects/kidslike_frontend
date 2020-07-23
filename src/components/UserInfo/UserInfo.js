@@ -23,34 +23,7 @@ const changeUserName = name => {
 const UserInfo = ({ isModalLogoutOpen, user }) => {
   const defaultName = user.email;
 
-  const IsShowLengRu = useSelector(getIsShowLengRu);
-
-  if (!IsShowLengRu) {
-    return (
-      <div>
-        <div className={styles.userinfobox}>
-          <div className={styles.userData}>
-            <img
-              className={styles.userinfologo}
-              alt="userlogo"
-              src={user.avatar || defaultuserlogo}
-            />
-            <p className={styles.userinfoname}>
-              {changeUserName(user.name || defaultName)}
-            </p>
-          </div>
-          <button
-            onClick={isModalLogoutOpen}
-            type="button"
-            className={styles.userinfobutton}
-          >
-            Вийти
-            {/* Выйти */}
-          </button>
-        </div>
-      </div>
-    );
-  }
+  const isShowLangRu = useSelector(getIsShowLengRu);
 
   return (
     <div>
@@ -70,8 +43,7 @@ const UserInfo = ({ isModalLogoutOpen, user }) => {
           type="button"
           className={styles.userinfobutton}
         >
-          {/* Вийти */}
-          Выйти
+          {!isShowLangRu ? 'Вийти' : 'Выйти'}
         </button>
       </div>
     </div>

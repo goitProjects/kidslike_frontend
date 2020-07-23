@@ -16,47 +16,24 @@ const ProgressBar = ({ userPoints, countPoints }) => {
     percent = 0;
   }
 
-  const IsShowLengRu = useSelector(getIsShowLengRu);
-
-  if (!IsShowLengRu) {
-    return (
-      <>
-        <div className={style.wrapper}>
-          <div className={style.info}>
-            <p className={style.progressText}>
-              Зароблено балів за весь період:
-              {/* Заработано баллов за весь период: */}
-              <span className={style.points}>{userPoints}</span>
-            </p>
-            <p className={style.progressText}>
-              Заплановано балів на цей тиждень:
-              {/* Запланировано баллов на эту неделю: */}
-              <span className={style.points}>{countPoints}</span>
-            </p>
-          </div>
-          <div className={style.progressLibrary_container}>
-            <span className={style.secondPoints}>
-              {userPoints}/{countPoints}
-            </span>
-            <Progress percent={percent > 100 ? 100 : percent} />
-          </div>
-        </div>
-      </>
-    );
-  }
+  const isShowLangRu = useSelector(getIsShowLengRu);
 
   return (
     <>
       <div className={style.wrapper}>
         <div className={style.info}>
           <p className={style.progressText}>
-            {/* Зароблено балів за весь період: */}
-            Заработано баллов за весь период:
+            {!isShowLangRu
+              ? 'Зароблено балів за весь період:'
+              : 'Заработано баллов за весь период:'}
+
             <span className={style.points}>{userPoints}</span>
           </p>
           <p className={style.progressText}>
-            {/* Заплановано балів на цей тиждень: */}
-            Запланировано баллов на эту неделю:
+            {!isShowLangRu
+              ? 'Заплановано балів на цей тиждень:'
+              : 'Запланировано баллов на эту неделю:'}
+
             <span className={style.points}>{countPoints}</span>
           </p>
         </div>

@@ -6,23 +6,12 @@ import getWeekPlanPoints from '../../redux/tasks/taskSelector';
 import { getIsShowLengRu } from '../../redux/global/globalSelectors';
 
 const PlanningPoints = ({ countPoints }) => {
-  const IsShowLengRu = useSelector(getIsShowLengRu);
-
-  if (!IsShowLengRu) {
-    return (
-      <p className={styles.pointsText}>
-        <span className={styles.pointsAmount}>{countPoints}</span>
-        бали
-        {/* баллы */}
-      </p>
-    );
-  }
+  const isShowLangRu = useSelector(getIsShowLengRu);
 
   return (
     <p className={styles.pointsText}>
       <span className={styles.pointsAmount}>{countPoints}</span>
-      {/* бали */}
-      баллы
+      {!isShowLangRu ? 'бали' : 'баллы'}
     </p>
   );
 };
