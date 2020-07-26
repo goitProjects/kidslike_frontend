@@ -63,12 +63,17 @@
   }
 
   .footer {
-    margin-top: -50px;
+    /* margin-top: -50px; */
+    margin-top: -40px;
     width: 370px;
     display: flex;
     margin-right: 0;
     justify-content: right;
     position: absolute;
     right: 0;
+  }
+
+  .footerSpan {
+    margin-bottom: 0;
   }
 }
