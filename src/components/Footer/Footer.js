@@ -15,15 +15,12 @@ const Footer = () => {
           <img src={LogoIMG} className={s.Logo_IMG} alt="kidslike" />
         </Link>
 
-        {!isShowLangRu ? (
-          <div className={s.footerText}>
-            Робимо життя батьків і дітей ізі &#9786;
-          </div>
-        ) : (
-          <div className={s.footerText}>
-            Делаем жизнь родителей и детей изи &#9786;
-          </div>
-        )}
+        <div className={s.footerText}>
+          {!isShowLangRu
+            ? 'Робимо життя батьків і дітей ізі'
+            : 'Делаем жизнь родителей и детей изи'}{' '}
+          &#9786;
+        </div>
 
         <p className={s.footerSpan}>2019</p>
       </div>
