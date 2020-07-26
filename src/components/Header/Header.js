@@ -82,7 +82,7 @@ class Header extends Component {
                       : styles.listLangButton
                   }
                 >
-                  ru
+                  рус
                 </button>
               </li>
               <li className={styles.listLangItem}>
@@ -95,7 +95,7 @@ class Header extends Component {
                       : styles.listLangButton
                   }
                 >
-                  ua
+                  укр
                 </button>
               </li>
             </ul>
