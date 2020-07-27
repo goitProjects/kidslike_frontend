@@ -25,7 +25,8 @@
   }
 
   .cardWrapper {
-    height: calc(100vh - 250px);
+    /* height: calc(100vh - 250px); */
+    height: calc(100vh - 265px);
     padding-top: 20px;
     overflow: auto;
   }

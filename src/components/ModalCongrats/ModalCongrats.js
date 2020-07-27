@@ -50,15 +50,12 @@ const ModalCongrats = ({ onClose, awards, userPoints }) => {
             </ul>
           </div>
 
-          {!isShowLangRu ? (
-            <p className={styleModalCongrats.prizeContainerItemText}>
-              Сумарна кількість балів: {result}
-            </p>
-          ) : (
-            <p className={styleModalCongrats.prizeContainerItemText}>
-              Суммарное количество баллов: {result}
-            </p>
-          )}
+          <p className={styleModalCongrats.prizeContainerItemText}>
+            {!isShowLangRu
+              ? 'Сумарна кількість балів: '
+              : 'Суммарное количество баллов: '}
+            {result}
+          </p>
 
           <div className={styleModalCongrats.buttonContainer}>
             {/* <button className={styleModalLogout.point_amount_long}>
@@ -66,7 +63,10 @@ const ModalCongrats = ({ onClose, awards, userPoints }) => {
             </button> */}
             {/* <AwardsSubmitButton buttonText="Підтвердити" onClick={userPoints} /> */}
 
-            <AwardsSubmitButton buttonText="Підтвердити" onClick={userPoints} />
+            <AwardsSubmitButton
+              buttonText={!isShowLangRu ? 'Підтвердити' : 'Подтвердить'}
+              onClick={userPoints}
+            />
           </div>
         </div>
       </ModalBackdrop>

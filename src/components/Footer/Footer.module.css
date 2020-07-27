@@ -24,7 +24,7 @@
 
 @media (min-width: 768px) {
   .footer {
-    width: 360px;
+    width: 370px;
     display: flex;
     margin: 0 auto;
   }
@@ -58,13 +58,22 @@
 }
 
 @media (min-width: 1280px) {
+  .footer_div {
+    padding-top: 0;
+  }
+
   .footer {
-    margin-top: -50px;
-    width: 360px;
+    /* margin-top: -50px; */
+    margin-top: -40px;
+    width: 370px;
     display: flex;
     margin-right: 0;
     justify-content: right;
     position: absolute;
     right: 0;
+  }
+
+  .footerSpan {
+    margin-bottom: 0;
   }
 }

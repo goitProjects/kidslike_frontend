@@ -28,7 +28,7 @@ const HeaderModal = ({ isAuth, onClose, isModalLogoutOpen }) => {
     },
     {
       path: routes.AUTH_PAGE.path,
-      name: !isShowLengRu ? 'Авторизація' : 'ГлаАвторизациявная',
+      name: !isShowLengRu ? 'Авторизація' : 'Авторизация',
       protected: false,
     },
     {
